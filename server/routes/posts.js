@@ -7,7 +7,7 @@ const Post=require("../models/PostModel");
 const User=require("../models/UserModel");
 const Profile=require("../models/ProfileModel");
 
-router.post("/",[
+router.post('/',[
     auth,
     [
         check("text","Text is required").not().isEmpty()
@@ -15,28 +15,28 @@ router.post("/",[
 ], async(req,res)=>{
 
     const errors=validationResult(req);
-
     if(!errors.isEmpty()){
         return res.status(400).json({errors:errors.array() });
     }
 
     try {
-
-        const { text, name, avatar, user} = req.body;
         const user=await User.findById(req.user.id).select("-password"); 
-        const newPost = {
-            text,
-            name,
-            avatar,
-            user
-        }
+
+        const newPost = new Post({
+            text: req.body.text,
+            username: user.username,
+            avatar: user.avatar,
+            user: req.user.id
+          });
+
         const post=await newPost.save();
         res.json(post);
-        
+
     } catch (error) {
         console.error(error);
         res.status(500).send("Server Error")
     }
 
-
 })
+
+module.exports=router;
