@@ -2,20 +2,22 @@ import axios from "axios";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
-  USER_LOADED_SUCCESFULLY,
+  USER_LOADED_SUCCESS,
   USER_LOADED_ERROR,
+  LOGIN_SUCCESS,
+  LOGIN_ERROR,
+  LOGOUT
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
 export const loadUser = () => async (dispatch) => {
-  
-  if(localStorage.token){
-    setAuthToken(localStorage.token)
+  if (localStorage.token) {
+    setAuthToken(localStorage.token);
   }
   try {
     const res = await axios.get("http://localhost:5000/api/auth");
     dispatch({
-      type: USER_LOADED_SUCCESFULLY,
+      type: USER_LOADED_SUCCESS,
       payload: res.data,
     });
   } catch (error) {
@@ -45,10 +47,30 @@ export const register =
         type: REGISTER_SUCCESS,
         payload: res.data,
       });
-      dispatch(loadUser())
+      dispatch(loadUser());
     } catch (error) {
       dispatch({
         type: REGISTER_FAIL,
       });
     }
   };
+
+export const logout = () => ({ type: LOGOUT });
+
+export const login = (email,password) => async (dispatch) => {
+  const body={email,password}
+  try {
+    const res = await axios.post("http://localhost:5000/api/auth/login",body);
+    dispatch({
+      type: LOGIN_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(loadUser());
+  } catch (error) {
+    dispatch({
+      type: LOGIN_ERROR,
+    });
+  }
+
+
+};

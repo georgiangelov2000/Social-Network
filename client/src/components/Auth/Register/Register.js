@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { Form, Button, Container } from "react-bootstrap";
-import { register } from "../../../actions/auth";
 import { connect } from "react-redux";
+import { register } from "../../../actions/auth";
+import PropTypes from 'prop-types';
 
-const Register = ({register}) => {
+const Register = ({register,isAuthenticated}) => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
@@ -26,6 +27,10 @@ const Register = ({register}) => {
       console.log('successfully register')
     }
   };
+
+  if(isAuthenticated){
+    return <Redirect to="/dashboard" />
+  }
 
   return (
     <Container>
@@ -87,4 +92,13 @@ const Register = ({register}) => {
   );
 };
 
-export default connect(null,{ register })(Register);
+Register.propTypes = {
+  register: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { register })(Register);

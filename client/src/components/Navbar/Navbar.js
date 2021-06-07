@@ -1,9 +1,22 @@
 import React from "react";
 import { Nav, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { logout } from "../../actions/auth";
 
-const Navbar = () => {
-  return (
+const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+  const authLinks = (
+    <>
+      <Nav className="bg-dark">
+        <Nav.Item>
+          <Button size="sm" onClick={logout}>Logout</Button>
+        </Nav.Item>
+      </Nav>
+    </>
+  );
+
+  const guestLinks = (
     <>
       <Nav className="bg-dark">
         <Nav.Item>
@@ -24,6 +37,17 @@ const Navbar = () => {
       </Nav>
     </>
   );
+
+  return <> {isAuthenticated ? authLinks : guestLinks} </>;
 };
 
-export default Navbar;
+Navbar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+};
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { logout })(Navbar);
