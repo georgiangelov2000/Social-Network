@@ -1,20 +1,45 @@
-import React, { useEffect, useState, useContext } from "react";
-import { useHistory, Link } from "react-router-dom";
-import { Form, Button,Container} from "react-bootstrap";
+import React, { useState } from "react";
+import { Link, Redirect } from "react-router-dom";
+import { Form, Button, Container } from "react-bootstrap";
+import { register } from "../../../actions/auth";
+import { connect } from "react-redux";
 
-const Register = () => {
+const Register = ({register}) => {
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+    password2: "",
+  });
+
+  const { username, email, password, password2 } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      console.log("Passwords do not match");
+    } else {
+      register({ username, email, password });
+      console.log('successfully register')
+    }
+  };
+
   return (
     <Container>
-      <Form>
+      <Form onSubmit={onSubmit}>
         <h1>Sign up</h1>
-        <Form.Group controlId="formBasicName">
-          <Form.Label>Name</Form.Label>
+        <Form.Group controlId="formBasicUsername">
+          <Form.Label>Username</Form.Label>
           <Form.Control
             size="sm"
-            required
             type="text"
-            placeholder="Enter name"
-            name="name"
+            placeholder="Enter Username"
+            name="username"
+            value={username}
+            onChange={onChange}
           />
         </Form.Group>
 
@@ -22,10 +47,11 @@ const Register = () => {
           <Form.Label>Email address</Form.Label>
           <Form.Control
             size="sm"
-            required
             name="email"
             type="email"
             placeholder="Enter email"
+            onChange={onChange}
+            value={email}
           />
         </Form.Group>
 
@@ -36,7 +62,8 @@ const Register = () => {
             type="password"
             name="password"
             placeholder="Password"
-            required
+            onChange={onChange}
+            value={password}
           />
         </Form.Group>
 
@@ -47,7 +74,8 @@ const Register = () => {
             type="password"
             name="password2"
             placeholder="Password"
-            required
+            onChange={onChange}
+            value={password2}
           />
         </Form.Group>
 
@@ -59,4 +87,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default connect(null,{ register })(Register);
