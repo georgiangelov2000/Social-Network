@@ -7,6 +7,7 @@ import Login from "./components/Auth/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Routing/PrivateRoute";
 import CreateProfile from "./components/Profile/CreateProfile/CreateProfile";
+import AddExperience from './components/Profile/AddExperience/AddExperience';
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";
@@ -24,14 +25,20 @@ function App() {
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateRoute
+            exact
+            path="/create-profile"
+            component={CreateProfile}
+          />
+          <PrivateRoute
+            exact
+            path="/add-experience"
+            component={AddExperience}
+          />
           <PrivateRoute 
           exact 
-          path="/dashboard" 
-          component={Dashboard} />
-          <PrivateRoute 
-           exact 
-           path="/create-profile" 
-           component={CreateProfile} />
+          path="/add-education" />
         </Switch>
       </Provider>
     </div>

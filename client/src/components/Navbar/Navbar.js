@@ -9,7 +9,7 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const authLinks = (
     <>
       <Nav className="bg-dark">
-      <Nav.Item>
+        <Nav.Item>
           <LinkContainer to="/dashboard">
             <Nav.Link className="text-white">Dashboard</Nav.Link>
           </LinkContainer>
@@ -20,7 +20,19 @@ const Navbar = ({ isAuthenticated, logout }) => {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <Button size="sm" onClick={logout}>Logout</Button>
+          <LinkContainer to="/add-experience">
+            <Nav.Link className="text-white">Add experience</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/add-education">
+            <Nav.Link className="text-white">Add education</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <Button size="sm" onClick={logout}>
+            Logout
+          </Button>
         </Nav.Item>
       </Nav>
     </>
@@ -53,12 +65,12 @@ const Navbar = ({ isAuthenticated, logout }) => {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);
