@@ -6,11 +6,15 @@ import {
   USER_LOADED_ERROR,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT
+  LOGOUT,
+  CLEAR_PROFILE
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
-export const logout = () => ({ type: LOGOUT });
+export const logout = () => dispatch => {
+  dispatch({type:CLEAR_PROFILE});
+  dispatch({type:LOGOUT});
+}
 
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {

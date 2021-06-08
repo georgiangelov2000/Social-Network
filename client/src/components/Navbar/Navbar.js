@@ -9,6 +9,11 @@ const Navbar = ({ isAuthenticated, logout }) => {
   const authLinks = (
     <>
       <Nav className="bg-dark">
+      <Nav.Item>
+          <LinkContainer to="/dashboard">
+            <Nav.Link className="text-white">Dashboard</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
         <Nav.Item>
           <Button size="sm" onClick={logout}>Logout</Button>
         </Nav.Item>
