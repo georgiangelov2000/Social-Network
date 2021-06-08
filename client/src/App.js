@@ -7,7 +7,8 @@ import Login from "./components/Auth/Login/Login";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Routing/PrivateRoute";
 import CreateProfile from "./components/Profile/CreateProfile/CreateProfile";
-import AddExperience from './components/Profile/AddExperience/AddExperience';
+import AddExperience from "./components/Profile/AddExperience/AddExperience";
+import AddEducation from "./components/Profile/AddEducation/AddEducation";
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";
@@ -38,7 +39,9 @@ function App() {
           />
           <PrivateRoute 
           exact 
-          path="/add-education" />
+          path="/add-education" 
+          component={AddEducation}
+          />
         </Switch>
       </Provider>
     </div>

@@ -1,45 +1,47 @@
 import React, { useState } from "react";
-import { Form, Button, Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { addExperience } from "../../../actions/profile";
+import { addEducation } from "../../../actions/profile";
+import { Form, Button, Container } from "react-bootstrap";
 
-const AddExperience = ({ addExperience }) => {
+const AddEducation = ({ addEducation }) => {
   const [formData, setFormData] = useState({
-    company: "",
-    title: "",
-    location: "",
+    school: "",
+    degree: "",
+    fieldofstudy: "",
     from: "",
     to: "",
     current: false,
     description: "",
   });
-  const { company, title, location, from, to, current, description } = formData;
+
+  const { school, degree, fieldofstudy, from, to, description, current } =
+    formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addExperience(formData);
+    addEducation(formData);
   };
 
   return (
     <Container>
       <Form onSubmit={onSubmit}>
-        <h3 className="text-center">Create Experience details</h3>
+        <h3 className="text-center">Add Your Education</h3>
 
         <Form.Group className="mb-3" controlId="formBasicText1">
           <Form.Control
             size="sm"
             type="text"
-            placeholder="* Job Title"
-            name="title"
-            value={title}
+            placeholder="* School or Bootcamp"
+            name="school"
+            value={school}
             onChange={onChange}
           />
           <Form.Text className="text-muted">
-            Current or previous work title
+            Current or previous school
           </Form.Text>
         </Form.Group>
 
@@ -47,26 +49,27 @@ const AddExperience = ({ addExperience }) => {
           <Form.Control
             size="sm"
             type="text"
-            placeholder="* Company"
-            name="company"
-            value={company}
+            placeholder="* Degree or Certificate"
+            name="degree"
+            value={degree}
             onChange={onChange}
+            required
           />
-          <Form.Text className="text-muted">
-            Current or previous company name
-          </Form.Text>
+          <Form.Text className="text-muted">Completed degree</Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicText3">
           <Form.Control
             size="sm"
             type="text"
-            placeholder="Location"
-            name="location"
-            value={location}
+            placeholder="Field of Study"
+            name="fieldofstudy"
+            value={fieldofstudy}
             onChange={onChange}
           />
-          <Form.Text className="text-muted">Location of the company</Form.Text>
+          <Form.Text className="text-muted">
+            Please describe field of study
+          </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicText4">
@@ -97,13 +100,13 @@ const AddExperience = ({ addExperience }) => {
             size="sm"
             as="textarea"
             name="description"
-            placeholder="Job Description"
+            placeholder="Education Description"
             value={description}
             rows={3}
             onChange={onChange}
           />
           <Form.Text className="text-muted">
-            Describe current or previous work
+            Please descripe more information about your education
           </Form.Text>
         </Form.Group>
 
@@ -113,10 +116,8 @@ const AddExperience = ({ addExperience }) => {
             name="current"
             checked={current}
             value={current}
-            onChange={() => {
-              setFormData({ ...formData, current: !current });
-            }}
-            label="Current job"
+            onChange={() => setFormData({ ...formData, current: !current })}
+            label="Current School"
           />
         </Form.Group>
 
@@ -133,10 +134,10 @@ const AddExperience = ({ addExperience }) => {
       </Form>
     </Container>
   );
+
+  AddEducation.propTypes = {
+    addEducation: PropTypes.func.isRequired,
+  };
 };
 
-AddExperience.propTypes = {
-  addExperience: PropTypes.func.isRequired,
-};
-
-export default connect(null, { addExperience })(AddExperience);
+export default connect(null, { addEducation })(AddEducation);

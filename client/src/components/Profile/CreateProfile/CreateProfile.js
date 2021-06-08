@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile } from "../../../actions/profile";
+import {useHistory} from "react-router-dom";
 import {
   Instagram,
   Linkedin,
@@ -12,6 +13,7 @@ import {
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
 const CreateProfile = ({ createProfile }) => {
+  let history = useHistory();
   const [displaySocialFields, toggleSocialFields] = useState(false);
 
   const [formData, setFormData] = useState({
