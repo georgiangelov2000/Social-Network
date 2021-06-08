@@ -10,6 +10,8 @@ import {
 } from "./types";
 import setAuthToken from "../utils/setAuthToken";
 
+export const logout = () => ({ type: LOGOUT });
+
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -54,8 +56,6 @@ export const register =
       });
     }
   };
-
-export const logout = () => ({ type: LOGOUT });
 
 export const login = (email,password) => async (dispatch) => {
   const body={email,password}

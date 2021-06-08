@@ -1,12 +1,16 @@
 import React, { useEffect } from "react";
 import "./App.css";
+
 import Header from "./components/Header/Header";
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
+import Dashboard from "./components/Dashboard/Dashboard";
+import PrivateRoute from "./components/Routing/PrivateRoute";
+
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
-import store from "./store";
 import { loadUser } from "./actions/auth";
+import store from "./store";
 
 function App() {
   useEffect(() => {
@@ -18,8 +22,9 @@ function App() {
       <Provider store={store}>
         <Header />
         <Switch>
-          <Route path="/register" component={Register} />
-          <Route path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/dashboard" component={Dashboard} />
         </Switch>
       </Provider>
     </div>
