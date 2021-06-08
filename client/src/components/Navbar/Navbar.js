@@ -15,6 +15,11 @@ const Navbar = ({ isAuthenticated, logout }) => {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
+          <LinkContainer to="/create-profile">
+            <Nav.Link className="text-white">Create profile</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
           <Button size="sm" onClick={logout}>Logout</Button>
         </Nav.Item>
       </Nav>
