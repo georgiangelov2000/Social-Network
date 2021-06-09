@@ -5,6 +5,7 @@ import {
   UPDATE_PROFILE,
   GET_PROFILES,
   LOGOUT,
+  ACCOUNT_DELETED,
 } from "../actions/types";
 
 const initialState = {
@@ -34,6 +35,12 @@ export default function (state = initialState, action) {
         error: payload,
         profile: null,
       };
+    case CLEAR_PROFILE:
+      return {
+        ...state,
+        profile: null,
+      };
+    case ACCOUNT_DELETED:
     case CLEAR_PROFILE:
     case LOGOUT:
       return {

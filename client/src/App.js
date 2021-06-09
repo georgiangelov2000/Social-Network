@@ -9,6 +9,9 @@ import PrivateRoute from "./components/Routing/PrivateRoute";
 import CreateProfile from "./components/Profile/CreateProfile/CreateProfile";
 import AddExperience from "./components/Profile/AddExperience/AddExperience";
 import AddEducation from "./components/Profile/AddEducation/AddEducation";
+import Profiles from "./components/Profile/Profiles/Profiles";
+import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
+
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";
@@ -26,6 +29,8 @@ function App() {
         <Switch>
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
+          <Route exact path="/profiles" component={Profiles} />
+          <Route exact path="/profile/:id" component={CurrentProfile} />
           <PrivateRoute exact path="/dashboard" component={Dashboard} />
           <PrivateRoute
             exact

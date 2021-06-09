@@ -1,9 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Moment from "react-moment";
+import { deleteEducation } from "../../../actions/profile";
 import { Table, Button } from "react-bootstrap";
+import { connect } from "react-redux";
 
-const DashEducation = ({ education }) => {
+const DashEducation = ({ education, deleteEducation }) => {
   return (
     <>
       <h2 className="text-center">Education Details</h2>
@@ -14,11 +16,12 @@ const DashEducation = ({ education }) => {
             <th>Degree</th>
             <th>Field of study</th>
             <th>Years</th>
+            <th>Action</th>
           </tr>
         </thead>
         <tbody>
           {education.map((edu) => (
-            <tr>
+            <tr key={edu._id}>
               <td>{edu.school}</td>
               <td>{edu.degree}</td>
               <td>{edu.fieldofstudy}</td>
@@ -31,8 +34,12 @@ const DashEducation = ({ education }) => {
                 )}
               </td>
               <td>
-                <Button size="sm" variant="danger">
-                  Danger
+                <Button
+                  onClick={() => deleteEducation(edu._id)}
+                  size="sm"
+                  variant="danger"
+                >
+                  Delete
                 </Button>
               </td>
             </tr>
@@ -44,7 +51,8 @@ const DashEducation = ({ education }) => {
 };
 
 DashEducation.propTypes = {
-  experience: PropTypes.array.isRequired,
+  education: PropTypes.array.isRequired,
+  deleteEducation: PropTypes.func.isRequired,
 };
 
-export default DashEducation;
+export default connect(null,{deleteEducation})(DashEducation);

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import { Form, Button, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { login } from "../../../actions/auth";
@@ -27,37 +28,42 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Container>
-      <Form onSubmit={onSubmit}>
-        <h1>Sign in</h1>
+      <Row>
+        <Col xs={6} className="m-auto">
+          <Form onSubmit={onSubmit} className="text-center">
+            <h1>Sign in</h1>
 
-        <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
-          <Form.Control
-            size="sm"
-            name="email"
-            type="email"
-            placeholder="Enter email"
-            value={email}
-            onChange={onChange}
-          />
-        </Form.Group>
+            <Form.Group controlId="formBasicEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                size="sm"
+                name="email"
+                type="email"
+                placeholder="Enter email"
+                value={email}
+                onChange={onChange}
+              />
+            </Form.Group>
 
-        <Form.Group controlId="formBasicPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control
-            size="sm"
-            type="password"
-            name="password"
-            placeholder="Password"
-            onChange={onChange}
-            value={password}
-          />
-        </Form.Group>
+            <Form.Group controlId="formBasicPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                size="sm"
+                type="password"
+                name="password"
+                placeholder="Password"
+                onChange={onChange}
+                value={password}
+              />
+            </Form.Group>
 
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
+            <Button className="mb-3" variant="primary" type="submit" size="sm" block>
+              Submit
+            </Button>
+            <Link  to="/register">Don't Have an Account? </Link>
+          </Form>
+        </Col>
+      </Row>
     </Container>
   );
 };

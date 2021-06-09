@@ -3,6 +3,8 @@ import {
   GET_PROFILES,
   PROFILE_ERROR,
   UPDATE_PROFILE,
+  CLEAR_PROFILE,
+  ACCOUNT_DELETED,
 } from "./types";
 import axios from "axios";
 
@@ -47,7 +49,6 @@ export const getProfileById = (userId) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
@@ -134,5 +135,20 @@ export const deleteEducation = (id) => async (dispatch) => {
     dispatch({
       type: PROFILE_ERROR,
     });
+  }
+};
+
+export const deleteAccount = () => async (dispatch) => {
+  if (window.confirm("Are you sure? This can NOT be undone!")) {
+    try {
+      await axios.delete("http://localhost:5000/api/profile");
+
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: ACCOUNT_DELETED });
+    } catch (err) {
+      dispatch({
+        type: PROFILE_ERROR,
+      });
+    }
   }
 };

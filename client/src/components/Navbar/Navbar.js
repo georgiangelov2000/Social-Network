@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
 
-const Navbar = ({ isAuthenticated, logout }) => {
+const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
   const authLinks = (
     <>
       <Nav className="bg-dark">
@@ -15,23 +15,20 @@ const Navbar = ({ isAuthenticated, logout }) => {
           </Button>
         </Nav.Item>
         <Nav.Item>
+          <LinkContainer to="/profiles">
+            <Nav.Link className="text-white">Developers</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
           <LinkContainer to="/dashboard">
             <Nav.Link className="text-white">Dashboard</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
-          <LinkContainer to="/create-profile">
-            <Nav.Link className="text-white">Create profile</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/add-experience">
-            <Nav.Link className="text-white">Add experience</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/add-education">
-            <Nav.Link className="text-white">Add education</Nav.Link>
+          <LinkContainer to="/dashboard">
+            <Nav.Link className="text-white">
+              Welcome {user && user.username}
+            </Nav.Link>
           </LinkContainer>
         </Nav.Item>
       </Nav>
@@ -44,6 +41,11 @@ const Navbar = ({ isAuthenticated, logout }) => {
         <Nav.Item>
           <LinkContainer to="/">
             <Nav.Link className="text-white">Home</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/profiles">
+            <Nav.Link className="text-white">Developers</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
