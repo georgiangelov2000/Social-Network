@@ -53,7 +53,6 @@ const AddEducation = ({ addEducation }) => {
             name="degree"
             value={degree}
             onChange={onChange}
-            required
           />
           <Form.Text className="text-muted">Completed degree</Form.Text>
         </Form.Group>
@@ -134,10 +133,6 @@ const AddEducation = ({ addEducation }) => {
       </Form>
     </Container>
   );
-
-  AddEducation.propTypes = {
-    addEducation: PropTypes.func.isRequired,
-  };
 };
 
 export default connect(null, { addEducation })(AddEducation);
