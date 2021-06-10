@@ -24,10 +24,19 @@ const Dashboard = ({
             <Col className="text-center mb-3" xs={12}>
               <h1>Dashboard</h1>
             </Col>
-            <Col xs={12} className="d-flex justify-content-around bg-secondary p-2">
-              <Link className="text-white" to="/create-profile">Create profile</Link>
-              <Link className="text-white" to="/add-experience">Add experience</Link>
-              <Link className="text-white" to="/add-education">Add education</Link>
+            <Col
+              xs={12}
+              className="d-flex justify-content-around bg-secondary p-2"
+            >
+              <Link className="text-white" to="/create-profile">
+                Create profile
+              </Link>
+              <Link className="text-white" to="/add-experience">
+                Add experience
+              </Link>
+              <Link className="text-white" to="/add-education">
+                Add education
+              </Link>
             </Col>
             <Col xs={12}>
               <DashExperience experience={profile.experience} />
@@ -42,13 +51,21 @@ const Dashboard = ({
           <Row>
             <Col className="text-center" xs={12}>
               <h1>Dashboard</h1>
-              <h4>Welcome {user && user.username}</h4>
-              <Col xs={12} className="d-flex justify-content-around bg-secondary">
-                <Link  className="text-white" to="/create-profile">Create profile</Link>
-                <Link  className="text-white" to="/add-experience">Add experience</Link>
-                <Link  className="text-white" to="/add-education">Add education</Link>
+              <h5>Please go to add profile information...</h5>
+              <Col
+                xs={12}
+                className="d-flex justify-content-around bg-secondary p-2 mb-2"
+              >
+                <Link className="text-white" to="/create-profile">
+                  Create profile
+                </Link>
+                <Link className="text-white" to="/add-experience">
+                  Add experience
+                </Link>
+                <Link className="text-white" to="/add-education">
+                  Add education
+                </Link>
               </Col>
-              <p>Please go to add profile information</p>
             </Col>
           </Row>
         </Container>

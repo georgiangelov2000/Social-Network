@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "react-avatar";
 import { Link } from "react-router-dom";
+import style from "./ProfileItem.module.css";
+import { FaCheck } from "react-icons/fa";
 import { ListGroup, ListGroupItem, Col, Row } from "react-bootstrap";
 
 const ProfileItem = ({
@@ -14,7 +16,7 @@ const ProfileItem = ({
   },
 }) => {
   return (
-    <Row className="m-0">
+    <Row className="m-0 mb-5">
       <Col className="m-auto" xs={3}>
         <ListGroup>
           <>
@@ -39,10 +41,17 @@ const ProfileItem = ({
               <Link to={`/profile/${_id}`}>View Profile</Link>
             </ListGroupItem>
             <ListGroupItem>
-              <span>Skills :</span>
-              <ul>
+              <span className="text-center m-auto">Skills :</span>
+              <ul className={style.list}>
                 {skills.slice(0, 4).map((skill, index) => (
-                  <li key={index}>{skill}</li>
+                  <li key={index} className={style.itemList}>
+                    <small>
+                      <strong>
+                        <FaCheck />
+                         {skill}
+                      </strong>
+                    </small>
+                  </li>
                 ))}
               </ul>
             </ListGroupItem>

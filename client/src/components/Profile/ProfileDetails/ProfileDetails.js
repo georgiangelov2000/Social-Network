@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "react-avatar";
 import { Row, Col, ListGroupItem, ListGroup } from "react-bootstrap";
+import { FaCheck } from 'react-icons/fa';
 
-
-const ProfileTop = ({
+const ProfileDetails = ({
   profile: {
     user: { username, avatar },
     status,
@@ -12,6 +12,8 @@ const ProfileTop = ({
     location,
     website,
     social,
+    bio,
+    skills,
   },
 }) => {
   return (
@@ -77,6 +79,29 @@ const ProfileTop = ({
                 <a href={social.instagram}>{social.instagram}</a>
               </ListGroupItem>
             )}
+
+            {bio && (
+              <ListGroupItem>
+                <span>Bio: </span>
+                {bio}
+              </ListGroupItem>
+            )}
+
+            {skills && (
+              <ListGroupItem>
+                <div>
+                  <h5>Skills: </h5>
+                  {skills.map((skill, index) => (
+                    <span key={index}>
+                      <small>
+                        <FaCheck />
+                        {skill}
+                      </small>
+                    </span>
+                  ))}
+                </div>
+              </ListGroupItem>
+            )}
           </>
         </ListGroup>
       </Col>
@@ -84,8 +109,8 @@ const ProfileTop = ({
   );
 };
 
-ProfileTop.propTypes = {
-  profile: PropTypes.object.isRequired
+ProfileDetails.propTypes = {
+  profile: PropTypes.object.isRequired,
 };
 
-export default ProfileTop;
+export default ProfileDetails;

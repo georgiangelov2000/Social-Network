@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "./App.css";
 
+import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Register from "./components/Auth/Register/Register";
 import Login from "./components/Auth/Login/Login";
@@ -27,6 +28,7 @@ function App() {
       <Provider store={store}>
         <Header />
         <Switch>
+          <Route exact path="/" component={Home} />
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/profiles" component={Profiles} />

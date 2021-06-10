@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfiles } from "../../../actions/profile";
-import { Row, Col } from "react-bootstrap";
 import ProfileItem from "../ProfileItem/ProfileItem";
 
 const Profiles = ({ getProfiles, profile: { profiles } }) => {
