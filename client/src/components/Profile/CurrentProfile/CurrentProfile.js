@@ -26,8 +26,8 @@ const CurrentProfile = ({
         <Row className="my-1 m-0">
           <Col className="text-center mb-4">
             {auth.isAuthenticated && auth.user._id === profile.user._id && (
-              <Link className="text-center" to={`/edit/profile`}>
-                Edit Profile
+              <Link className="text-center" to={`/dashboard`}>
+                Тhis is your profile
               </Link>
             )}
             <ProfileDetails profile={profile} />

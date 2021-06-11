@@ -56,13 +56,14 @@ export const getProfileById = (userId) => async (dispatch) => {
   }
 };
 
-export const createProfile = (formData) => async (dispatch) => {
+export const createProfile = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.post("http://localhost:5000/api/profile", formData);
     dispatch({
       type: GET_PROFILE,
       payload: res.data,
     });
+    history.push("/dashboard");
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -70,7 +71,7 @@ export const createProfile = (formData) => async (dispatch) => {
   }
 };
 
-export const addExperience = (formData) => async (dispatch) => {
+export const addExperience = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.put(
       "http://localhost:5000/api/profile/experience",
@@ -81,6 +82,7 @@ export const addExperience = (formData) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data,
     });
+    history.push("/dashboard");
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,
@@ -89,7 +91,7 @@ export const addExperience = (formData) => async (dispatch) => {
   }
 };
 
-export const addEducation = (formData) => async (dispatch) => {
+export const addEducation = (formData, history) => async (dispatch) => {
   try {
     const res = await axios.put(
       "http://localhost:5000/api/profile/education",
@@ -100,6 +102,7 @@ export const addEducation = (formData) => async (dispatch) => {
       type: UPDATE_PROFILE,
       payload: res.data,
     });
+    history.push("/dashboard");
   } catch (err) {
     dispatch({
       type: PROFILE_ERROR,

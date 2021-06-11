@@ -13,7 +13,6 @@ import AddEducation from "./components/Profile/AddEducation/AddEducation";
 import Profiles from "./components/Profile/Profiles/Profiles";
 import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
-
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";

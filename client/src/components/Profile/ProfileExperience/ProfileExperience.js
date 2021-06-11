@@ -8,11 +8,13 @@ const ProfileExperience = ({
 }) => {
   return (
     <Row className="w-50 m-auto">
-      <h5 className="m-auto">Experience</h5>
-      <Card>
+      <Col xs={12}>
+        <h5 className="m-auto">Experience</h5>
+      </Col>
+      <Card className="m-auto w-100">
         <Col xs={12}>
           <strong className="text-dark">Company: </strong>
-          {company} :{" "}
+          {company} :
           <small>
             <strong>
               {formatDate(from)} - {to ? formatDate(to) : "Now"}

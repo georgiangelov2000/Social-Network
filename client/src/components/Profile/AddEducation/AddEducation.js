@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { addEducation } from "../../../actions/profile";
 import { Form, Button, Container } from "react-bootstrap";
 
-const AddEducation = ({ addEducation }) => {
+const AddEducation = ({ addEducation,history }) => {
   const [formData, setFormData] = useState({
     school: "",
     degree: "",
@@ -23,7 +23,7 @@ const AddEducation = ({ addEducation }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    addEducation(formData);
+    addEducation(formData,history);
   };
 
   return (

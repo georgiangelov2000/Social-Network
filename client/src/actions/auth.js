@@ -33,8 +33,7 @@ export const loadUser = () => async (dispatch) => {
   }
 };
 
-export const register =
-  ({ username, email, password }) =>
+export const register =({ username, email, password }) =>
   async (dispatch) => {
     const config = {
       headers: {

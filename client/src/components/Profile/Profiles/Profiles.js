@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfiles } from "../../../actions/profile";
 import ProfileItem from "../ProfileItem/ProfileItem";
+import { Row } from "react-bootstrap";
 
 const Profiles = ({ getProfiles, profile: { profiles } }) => {
   useEffect(() => {
@@ -11,14 +12,16 @@ const Profiles = ({ getProfiles, profile: { profiles } }) => {
 
   return (
     <>
-      <h1 className="text-center">Developers</h1>
-      {profiles.length > 0 ? (
-        profiles.map((profile) => (
-          <ProfileItem key={profile._id} profile={profile} />
-        ))
-      ) : (
-        <h5>No profiles found...</h5>
-      )}
+      <h5 className="text-center">Developers</h5>
+      <Row className="m-0">
+        {profiles.length > 0 ? (
+          profiles.map((profile) => (
+            <ProfileItem key={profile._id} profile={profile} />
+          ))
+        ) : (
+          <h5>No profiles found...</h5>
+        )}
+      </Row>
     </>
   );
 };
