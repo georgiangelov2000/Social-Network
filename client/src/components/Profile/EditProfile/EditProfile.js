@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { createProfile } from "../../../actions/profile";
+import { createProfile, getCurrentProfile } from "../../../actions/profile";
+import { Form, Container, Row, Col, Button } from "react-bootstrap";
 import {
   Instagram,
   Linkedin,
@@ -9,11 +10,12 @@ import {
   Facebook,
   Twitter,
 } from "react-bootstrap-icons";
-import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-const CreateProfile = ({ createProfile }) => {
-  const [displaySocialFields, toggleSocialFields] = useState(false);
-
+const EditProfile = ({
+  profile: { profile },
+  createProfile,
+  getCurrentProfile,
+}) => {
   const [formData, setFormData] = useState({
     company: "",
     website: "",
@@ -27,6 +29,26 @@ const CreateProfile = ({ createProfile }) => {
     youtube: "",
     instagram: "",
   });
+
+  const [displaySocialFields, toggleSocialFields] = useState(false);
+
+  useEffect(() => {
+    getCurrentProfile();
+
+    setFormData({
+      company: !profile.company ? "" : profile.company,
+      website: !profile.website ? "" : profile.website,
+      location: !profile.location ? "" : profile.location,
+      status: !profile.status ? "" : profile.status,
+      skills: !profile.skills ? "" : profile.skills.join(","),
+      bio: !profile.bio ? "" : profile.bio,
+      twitter: !profile.social ? "" : profile.social.twitter,
+      facebook: !profile.social ? "" : profile.social.facebook,
+      linkedin: !profile.social ? "" : profile.social.linkedin,
+      youtube: !profile.social ? "" : profile.social.youtube,
+      instagram: !profile.social ? "" : profile.social.instagram,
+    });
+  }, []);
 
   const {
     company,
@@ -45,14 +67,14 @@ const CreateProfile = ({ createProfile }) => {
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const onSumbit = (e) => {
+  const onSubmit = (e) => {
     e.preventDefault();
     createProfile(formData);
   };
 
   return (
     <Container>
-      <Form onSubmit={onSumbit} >
+      <Form onSubmit={onSubmit}>
         <h3 className="text-center">Create your profile</h3>
 
         <Form.Group controlId="exampleForm.ControlSelect1">
@@ -233,14 +255,31 @@ const CreateProfile = ({ createProfile }) => {
             </Row>
           </>
         ) : null}
-        <Button  type="submit" value="Submit" variant="primary" block size="sm" className="mb-3">Submit</Button>
+        <Button
+          type="submit"
+          value="Submit"
+          variant="primary"
+          block
+          size="sm"
+          className="mb-3"
+        >
+          Submit
+        </Button>
       </Form>
     </Container>
   );
 };
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
 };
 
-export default connect (null,{createProfile})(CreateProfile);
+const mapStateToProps = (state) => ({
+  profile: state.profile,
+});
+
+export default connect(mapStateToProps, { createProfile, getCurrentProfile })(
+  EditProfile
+);

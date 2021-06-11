@@ -6,6 +6,7 @@ import { getCurrentProfile } from "../../actions/profile";
 import { Container, Row, Col } from "react-bootstrap";
 import DashExperience from "./DashExperience/DashExperience";
 import DashEducation from "./DashEducation/DashEducation";
+import SocialProfile from "./SocialProfile/SocialProfile";
 
 const Dashboard = ({
   getCurrentProfile,
@@ -28,6 +29,9 @@ const Dashboard = ({
               xs={12}
               className="d-flex justify-content-around bg-secondary p-2"
             >
+              <Link className="text-white" to="/edit-profile">
+                Edit profile
+              </Link>
               <Link className="text-white" to="/create-profile">
                 Create profile
               </Link>
@@ -43,6 +47,9 @@ const Dashboard = ({
             </Col>
             <Col xs={12}>
               <DashEducation education={profile.education} />
+            </Col>
+            <Col>
+              <SocialProfile profile={profile} />
             </Col>
           </Row>
         </Container>
