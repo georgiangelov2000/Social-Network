@@ -2,11 +2,14 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import { Row, Col } from "react-bootstrap";
+
 import { getProfileById } from "../../../actions/profile";
+
 import ProfileDetails from "../ProfileDetails/ProfileDetails";
 import ProfileExperience from "../ProfileExperience/ProfileExperience";
 import ProfileEducation from "../ProfileEducation/ProfileEducation";
-import { Row, Col } from "react-bootstrap";
+
 
 const CurrentProfile = ({
   getProfileById,

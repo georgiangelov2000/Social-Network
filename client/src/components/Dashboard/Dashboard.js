@@ -32,7 +32,7 @@ const Dashboard = ({
               <Link className="text-white" to="/edit-profile">
                 Edit profile
               </Link>
-              
+
               <Link className="text-white" to="/create-profile">
                 Create profile
               </Link>

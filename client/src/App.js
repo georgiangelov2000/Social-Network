@@ -13,6 +13,7 @@ import AddEducation from "./components/Profile/AddEducation/AddEducation";
 import Profiles from "./components/Profile/Profiles/Profiles";
 import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
+
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";
@@ -33,8 +34,16 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/profile/:id" component={CurrentProfile} />
-          <PrivateRoute exact path="/dashboard" component={Dashboard} />
-          <PrivateRoute exact path="/edit-profile" component={EditProfile} />
+          <PrivateRoute 
+          exact 
+          path="/dashboard" 
+          component={Dashboard} 
+          />
+          <PrivateRoute 
+          exact 
+          path="/edit-profile" 
+          component={EditProfile} 
+          />
           <PrivateRoute
             exact
             path="/create-profile"

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -57,10 +56,16 @@ const Login = ({ login, isAuthenticated }) => {
               />
             </Form.Group>
 
-            <Button className="mb-3" variant="primary" type="submit" size="sm" block>
+            <Button
+              className="mb-3"
+              variant="primary"
+              type="submit"
+              size="sm"
+              block
+            >
               Submit
             </Button>
-            <Link  to="/register">Don't Have an Account? </Link>
+            <Link to="/register">Don't Have an Account? </Link>
           </Form>
         </Col>
       </Row>
