@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { Redirect, Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
-import PropTypes from "prop-types";
 import { login } from "../../../actions/auth";
+import Alert from "../../Alert/Alert";
 
 const Login = ({ login, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -27,6 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Container>
+       <Alert />
       <Row>
         <Col xs={6} className="m-auto">
           <Form onSubmit={onSubmit} className="text-center">

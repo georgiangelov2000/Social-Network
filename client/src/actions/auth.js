@@ -1,4 +1,5 @@
 import axios from "axios";
+import {setAlert} from "./alert";
 import {
   REGISTER_SUCCESS,
   REGISTER_FAIL,
@@ -27,9 +28,17 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
+
+    const errors=error.response.data.errors;
+
+    if(errors){
+      errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+    }
+
     dispatch({
       type: USER_LOADED_ERROR,
     });
+
   }
 };
 
@@ -43,8 +52,7 @@ export const register =({ username, email, password }) =>
     const body = JSON.stringify({ username, email, password });
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/users/register",
+      const res = await axios.post("http://localhost:5000/api/users/register",
         body,
         config
       );
@@ -54,9 +62,15 @@ export const register =({ username, email, password }) =>
       });
       dispatch(loadUser());
     } catch (error) {
+
+      const errors=error.response.data.errors;
+      if(errors){
+        errors.forEach(error => dispatch(setAlert(error.msg, 'danger')));
+      }
       dispatch({
         type: REGISTER_FAIL,
       });
+
     }
   };
 
@@ -70,10 +84,14 @@ export const login = (email,password) => async (dispatch) => {
     });
     dispatch(loadUser());
   } catch (error) {
+
+    const errors=error.response.data.errors;
+    if(errors){
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
     dispatch({
       type: LOGIN_ERROR,
     });
+
   }
-
-
 };

@@ -8,15 +8,19 @@ import { logout } from "../../actions/auth";
 const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
   const authLinks = (
     <>
-      <Nav className="bg-dark">
-        <Nav.Item className="d-flex justify-content-center">
-          <Button size="sm" onClick={logout} variant="link">
-            Logout
-          </Button>
-        </Nav.Item>
+      <Nav className="bg-dark justify-content-center">
         <Nav.Item>
           <LinkContainer to="/">
             <Nav.Link className="text-white">Home</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/dashboard">
+            <Nav.Link className="text-white">
+              Welcome{" "}
+              {user &&
+                user.username.charAt(0).toUpperCase() + user.username.slice(1)}
+            </Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
@@ -34,12 +38,10 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
             <Nav.Link className="text-white">Posts</Nav.Link>
           </LinkContainer>
         </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/dashboard">
-            <Nav.Link className="text-white">
-              Welcome {user && user.username.charAt(0).toUpperCase() + user.username.slice(1)}
-            </Nav.Link>
-          </LinkContainer>
+        <Nav.Item className="d-flex justify-content-center">
+          <Button size="sm" onClick={logout} variant="link">
+            LOGOUT
+          </Button>
         </Nav.Item>
       </Nav>
     </>
@@ -47,7 +49,7 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
 
   const guestLinks = (
     <>
-      <Nav className="bg-dark">
+      <Nav className="bg-dark justify-content-center">
         <Nav.Item>
           <LinkContainer to="/">
             <Nav.Link className="text-white">Home</Nav.Link>

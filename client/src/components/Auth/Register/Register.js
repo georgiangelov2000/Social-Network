@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+
+import Alert from "../../Alert/Alert";
+
 import { Link, Redirect } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { register } from "../../../actions/auth";
+import { setAlert } from "../../../actions/alert";
 import PropTypes from "prop-types";
 
 const Register = ({ register, isAuthenticated }) => {
@@ -21,10 +25,9 @@ const Register = ({ register, isAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      console.log("Passwords do not match");
+      setAlert("Password do not match", "danger");
     } else {
       register({ username, email, password });
-      console.log("successfully register");
     }
   };
 
@@ -34,6 +37,7 @@ const Register = ({ register, isAuthenticated }) => {
 
   return (
     <Container className="text-center">
+      <Alert />
       <Row>
         <Col xs={6} className="m-auto">
           <Form onSubmit={onSubmit}>

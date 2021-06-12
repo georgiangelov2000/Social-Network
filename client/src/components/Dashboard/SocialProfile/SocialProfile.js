@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button } from "react-bootstrap";
+import { Table } from "react-bootstrap";
 import PropTypes from "prop-types";
 import {
   Instagram,
@@ -26,10 +26,8 @@ const SocialProfile = ({ profile: { social } }) => {
           <tr>
             {social.instagram ? (
               <td>
-                <a href={social.instagram}>
-                  <Instagram />
-                  Instagram
-                </a>
+                <Instagram />
+                <a href={social.instagram}> Instagram</a>
               </td>
             ) : (
               <td></td>
@@ -37,9 +35,8 @@ const SocialProfile = ({ profile: { social } }) => {
 
             {social.linkedin ? (
               <td>
-                <a href={social.linkedin}>
-                  <Linkedin /> Linkedin
-                </a>
+                <Linkedin />
+                <a href={social.linkedin}> Linkedin</a>
               </td>
             ) : (
               <td></td>
@@ -47,9 +44,8 @@ const SocialProfile = ({ profile: { social } }) => {
 
             {social.facebook ? (
               <td>
-                <a href={social.facebook}>
-                  <Facebook /> Facebook
-                </a>
+                <Facebook />
+                <a href={social.facebook}> Facebook</a>
               </td>
             ) : (
               <td></td>
@@ -57,9 +53,8 @@ const SocialProfile = ({ profile: { social } }) => {
 
             {social.twitter ? (
               <td>
-                <a href={social.twitter}>
-                  <Twitter />  Twitter
-                </a>
+                <Twitter />
+                <a href={social.twitter}> Twitter</a>
               </td>
             ) : (
               <td></td>

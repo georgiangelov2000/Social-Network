@@ -1,20 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import formatDate from "../../../utils/formatDate";
-import { connect } from "react-redux";
-import { Col, Card } from "react-bootstrap";
-import Avatar from "react-avatar";
+import { Col, Card, Button, Row } from "react-bootstrap";
 import { CalendarCheck } from "react-bootstrap-icons";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import Avatar from "react-avatar";
+import { deletePost } from "../../../actions/post";
 
 const PostItem = ({
+  deletePost,
+  auth,
+  showActions,
   post: { _id, text, username, avatar, user, likes, comments, date },
 }) => {
   return (
-    <Col xs={6}>
+    <Col xs={12} className="mb-2">
       <Card>
         <Avatar className="m-auto" size="150" round={true} src={avatar} />
-        <Card.Body>
+        <Card.Body className="text-center">
           <Card.Title>
             {" "}
             <h4>{username.charAt(0).toUpperCase() + username.slice(1)}</h4>
@@ -29,9 +33,30 @@ const PostItem = ({
               <CalendarCheck />
             </span>
             <small> Posted on {formatDate(date)}</small>
-            <div className="mt-3">
-              <Link to={`/profile/${user}`}>Profile Details</Link>
-            </div>
+
+            {showActions ? (
+              <Row className="text-center">
+                <Col xs={12}>
+                  <Link to={`/profile/${user}`}>Profile Details</Link>
+                </Col>
+
+                <Col xs={12}>
+                  <Link to={`/posts/${_id}`}>Discussion </Link>
+                </Col>
+
+                <Col xs={12}>
+                  {user === auth.user._id ? (
+                    <Button
+                      variant="outline-danger"
+                      size="sm"
+                      onClick={() => deletePost(_id)}
+                    >
+                      Delete
+                    </Button>
+                  ) : null}
+                </Col>
+              </Row>
+            ) : null}
           </Card.Text>
         </Card.Body>
         <Card.Footer>
@@ -40,6 +65,10 @@ const PostItem = ({
       </Card>
     </Col>
   );
+};
+
+PostItem.defaultProps = {
+  showActions: true,
 };
 
 PostItem.propTypes = {
@@ -51,4 +80,8 @@ PostItem.propTypes = {
   showActions: PropTypes.bool,
 };
 
-export default PostItem;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+export default connect(mapStateToProps, { deletePost })(PostItem);

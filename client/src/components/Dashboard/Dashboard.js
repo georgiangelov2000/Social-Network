@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getCurrentProfile } from "../../actions/profile";
 import { Container, Row, Col } from "react-bootstrap";
+
 import DashExperience from "./DashExperience/DashExperience";
 import DashEducation from "./DashEducation/DashEducation";
 import SocialProfile from "./SocialProfile/SocialProfile";

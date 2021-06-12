@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap-icons";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-const CreateProfile = ({ createProfile }) => {
+const CreateProfile = ({ createProfile,history }) => {
   const [displaySocialFields, toggleSocialFields] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -47,7 +47,7 @@ const CreateProfile = ({ createProfile }) => {
 
   const onSumbit = (e) => {
     e.preventDefault();
-    createProfile(formData);
+    createProfile(formData,history);
   };
 
   return (

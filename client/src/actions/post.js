@@ -54,7 +54,7 @@ export const addPost = (formData) => async (dispatch) => {
 
 export const deletePost = (id) => async (dispatch) => {
   try {
-    await axios.delete(`http://localhost:5000/api/posts${id}`);
+    await axios.delete(`http://localhost:5000/api/posts/${id}`);
     dispatch({
       type: DELETE_POST,
       payload: id,

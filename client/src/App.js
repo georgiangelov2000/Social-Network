@@ -14,6 +14,7 @@ import Profiles from "./components/Profile/Profiles/Profiles";
 import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import Posts from "./components/Posts/Posts/Posts";
+import Post from "./components/Posts/Post/Post";
 
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -60,7 +61,16 @@ function App() {
             path="/add-experience"
             component={AddExperience}
           />
-          <PrivateRoute exact path="/add-education" component={AddEducation} />
+          <PrivateRoute
+            exact
+            path="/posts/:id"
+            component={Post}
+          />
+          <PrivateRoute 
+          exact 
+          path="/add-education" 
+          component={AddEducation} 
+          />
         </Switch>
       </Provider>
     </div>
