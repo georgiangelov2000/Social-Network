@@ -1,29 +1,20 @@
 import React from "react";
 import Profiles from "../Profile/Profiles/Profiles";
+import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 const Home = () => {
   return (
-    <div className="text-center mt-2">
-      <h1>Social Network Group</h1>
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting
-        industry. Lorem Ipsum has been the industry's standard dummy text ever
-        since the 1500s, when an unknown printer took a galley of type and
-        scrambled it to make a type specimen book. It has survived not only five
-        centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and
-        typesetting industry. Lorem Ipsum has been the industry's standard dummy
-        text ever since the 1500s, when an unknown printer took a galley of type
-        and scrambled it to make a type specimen book. It has survived not only
-        five centuries, but also the leap into electronic typesetting, remaining
-        essentially unchanged. It was popularised in the 1960s with the release
-        of Letraset sheets containing Lorem Ipsum passages, and more recently
-        with desktop publishing software like Aldus PageMaker including versions
-        of Lorem Ipsum.
-      </p>
+    <div className="text-center m-0 mt-2 ">
+      <Col xs={12} className="mb-2" >
+        <h1>Social Network Group</h1>
+        <small>
+          <strong>
+            CREATE YOUR PORTFOLIO, CONNECT WITH OTHER DEVELOPERS AND START A
+            JOINT BUSINESS!
+          </strong>
+        </small>
+      </Col>
       <Profiles />
     </div>
   );

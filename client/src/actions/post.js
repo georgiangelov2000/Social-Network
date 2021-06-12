@@ -14,8 +14,8 @@ export const getPosts = () => async (dispatch) => {
   try {
     const res = await axios.get("http://localhost:5000/api/posts");
     dispatch({
-      type:GET_POSTS,
-      payLoad: res.data,
+      type: GET_POSTS,
+      payload: res.data,
     });
   } catch (error) {
     dispatch({

@@ -12,7 +12,7 @@ const Profiles = ({ getProfiles, profile: { profiles } }) => {
 
   return (
     <>
-      <h5 className="text-center">Developers</h5>
+      <h4 className="text-center">Developers</h4>
       <Row xs={1} md={3} className="m-0 g-4">
         {profiles.length > 0 ? (
           profiles.map((profile) => (
