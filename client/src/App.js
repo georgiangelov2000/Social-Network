@@ -13,7 +13,7 @@ import AddEducation from "./components/Profile/AddEducation/AddEducation";
 import Profiles from "./components/Profile/Profiles/Profiles";
 import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
-
+import Posts from "./components/Posts/Posts/Posts";
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import { loadUser } from "./actions/auth";
@@ -38,6 +38,11 @@ function App() {
           exact 
           path="/dashboard" 
           component={Dashboard} 
+          />
+           <PrivateRoute 
+          exact 
+          path="/posts" 
+          component={Posts} 
           />
           <PrivateRoute 
           exact 

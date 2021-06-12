@@ -30,9 +30,14 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
+          <LinkContainer to="/posts">
+            <Nav.Link className="text-white">Posts</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
           <LinkContainer to="/dashboard">
             <Nav.Link className="text-white">
-              Welcome {user && user.username}
+              Welcome {user && user.username.charAt(0).toUpperCase() + user.username.slice(1)}
             </Nav.Link>
           </LinkContainer>
         </Nav.Item>
