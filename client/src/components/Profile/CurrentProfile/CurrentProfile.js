@@ -46,7 +46,7 @@ const CurrentProfile = ({
                 ))}
               </>
             ) : (
-              <h5>Experience details not found</h5>
+              null
             )}
           </Col>
           <Col className="text-center mb-4" xs={12}>
@@ -57,7 +57,7 @@ const CurrentProfile = ({
                 ))}
               </>
             ) : (
-              <h5>Education details not found</h5>
+              null
             )}
           </Col>
         </Row>

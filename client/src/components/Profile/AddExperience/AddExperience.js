@@ -3,6 +3,7 @@ import { Form, Button, Container } from "react-bootstrap";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addExperience } from "../../../actions/profile";
+import Alert from "../../Alert/Alert";
 
 const AddExperience = ({ addExperience, history }) => {
   const [formData, setFormData] = useState({
@@ -26,6 +27,7 @@ const AddExperience = ({ addExperience, history }) => {
 
   return (
     <Container>
+      <Alert />
       <Form onSubmit={onSubmit}>
         <h3 className="text-center">Create Experience details</h3>
 

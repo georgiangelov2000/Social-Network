@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addEducation } from "../../../actions/profile";
 import { Form, Button, Container } from "react-bootstrap";
+import Alert from "../../Alert/Alert";
 
 const AddEducation = ({ addEducation,history }) => {
   const [formData, setFormData] = useState({
@@ -28,6 +28,7 @@ const AddEducation = ({ addEducation,history }) => {
 
   return (
     <Container>
+      <Alert />
       <Form onSubmit={onSubmit}>
         <h3 className="text-center">Add Your Education</h3>
 

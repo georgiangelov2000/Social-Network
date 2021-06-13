@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { addPost } from "../../../actions/post";
-import { Form, Container, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState("");

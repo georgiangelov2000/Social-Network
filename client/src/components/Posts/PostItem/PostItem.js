@@ -2,14 +2,17 @@ import React from "react";
 import formatDate from "../../../utils/formatDate";
 import { Col, Card, Button, Row } from "react-bootstrap";
 import { CalendarCheck } from "react-bootstrap-icons";
+import { deletePost, addLike, removeLike } from "../../../actions/post";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import Avatar from "react-avatar";
-import { deletePost } from "../../../actions/post";
+import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const PostItem = ({
   deletePost,
+  addLike,
+  removeLike,
   auth,
   showActions,
   post: { _id, text, username, avatar, user, likes, comments, date },
@@ -40,7 +43,7 @@ const PostItem = ({
                   <Link to={`/profile/${user}`}>Profile Details</Link>
                 </Col>
 
-                <Col xs={12}>
+                <Col xs={12} className="mb-1">
                   <Link to={`/posts/${_id}`}>Discussion </Link>
                 </Col>
 
@@ -50,11 +53,50 @@ const PostItem = ({
                       variant="outline-danger"
                       size="sm"
                       onClick={() => deletePost(_id)}
+                      className="mb-2"
                     >
                       Delete
                     </Button>
                   ) : null}
                 </Col>
+
+                {user === auth.user._id ? null : (
+                  <>
+                    <Col xs={12}>
+                      <Button
+                        variant="outline-success"
+                        size="sm"
+                        className="mb-2"
+                        onClick={() => addLike(_id)}
+                      >
+                        <FaThumbsUp />
+                      </Button>
+                    </Col>
+
+                    <Col xs={12}>
+                      <Button
+                        variant="outline-warning"
+                        size="sm"
+                        className="mb-2"
+                        onClick={() => removeLike(_id)}
+                      >
+                        <FaThumbsDown />
+                      </Button>
+                    </Col>
+                    
+                    <Col xs={12}>
+                      <span>
+                        {likes.length < 0 ? (
+                          <>
+                            <span>Likes: 0</span>
+                          </>
+                        ) : (
+                          <span>Likes: {likes.length}</span>
+                        )}
+                      </span>
+                    </Col>
+                  </>
+                )}
               </Row>
             ) : null}
           </Card.Text>
@@ -84,4 +126,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { deletePost })(PostItem);
+export default connect(mapStateToProps, { deletePost, addLike, removeLike })(
+  PostItem
+);

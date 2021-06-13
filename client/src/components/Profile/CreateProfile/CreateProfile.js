@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { createProfile } from "../../../actions/profile";
+import Alert from "../../Alert/Alert";
 import {
   Instagram,
   Linkedin,
@@ -52,6 +53,7 @@ const CreateProfile = ({ createProfile,history }) => {
 
   return (
     <Container>
+      <Alert />
       <Form onSubmit={onSumbit} >
         <h3 className="text-center">Create your profile</h3>
 

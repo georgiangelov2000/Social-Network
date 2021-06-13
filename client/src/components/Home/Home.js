@@ -1,7 +1,6 @@
 import React from "react";
 import Profiles from "../Profile/Profiles/Profiles";
-import { Link } from "react-router-dom";
-import { Row, Col } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 
 const Home = () => {
   return (

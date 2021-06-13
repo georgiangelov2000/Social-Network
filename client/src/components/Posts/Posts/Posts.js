@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 import { getPosts } from "../../../actions/post";
 import { Container } from "react-bootstrap";
 
-import { Row, CardGroup } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { Chat } from "react-bootstrap-icons";
 
 const Posts = ({ getPosts, post: { posts } }) => {
