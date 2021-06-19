@@ -10,7 +10,9 @@ const Post = ({ getPost, post: { post }, match }) => {
     getPost(match.params.id);
   }, [getPost, match.params.id]);
 
-  return (
+  return post === null ? (
+    <span>Post not found</span>
+  ) : (
     <Container>
       <Row>
         <Col className="mt-5">
