@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { getProfiles } from "../../../actions/profile";
+
 import ProfileItem from "../ProfileItem/ProfileItem";
 import { Row } from "react-bootstrap";
 
@@ -13,6 +14,8 @@ const Profiles = ({ getProfiles, profile: { profiles } }) => {
   return (
     <>
       <h4 className="text-center">Developers</h4>
+
+
       <Row xs={1} md={3} className="m-0 g-4">
         {profiles.length > 0 ? (
           profiles.map((profile) => (

@@ -4,6 +4,7 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
+  FILTER_PROFILES,
   LOGOUT,
   ACCOUNT_DELETED,
 } from "../actions/types";
@@ -12,6 +13,7 @@ const initialState = {
   profile: null,
   profiles: [],
   error: {},
+  filtered:[]
 };
 
 export default function (state = initialState, action) {
@@ -40,6 +42,16 @@ export default function (state = initialState, action) {
         ...state,
         profile: null,
       };
+
+    case FILTER_PROFILES:
+      return {
+        ...state,
+        filtered: state.profiles.filter((profile) => {
+          const regex = new RegExp(`${payload}`);
+          return profile.username.match(regex) || profile.email.match(regex);
+        }),
+      };
+
     case ACCOUNT_DELETED:
     case CLEAR_PROFILE:
     case LOGOUT:

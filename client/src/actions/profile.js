@@ -1,4 +1,4 @@
-import {setAlert} from './alert';
+import { setAlert } from "./alert";
 import {
   GET_PROFILE,
   GET_PROFILES,
@@ -6,6 +6,7 @@ import {
   UPDATE_PROFILE,
   CLEAR_PROFILE,
   ACCOUNT_DELETED,
+  FILTER_PROFILES,
 } from "./types";
 import axios from "axios";
 
@@ -22,7 +23,10 @@ export const getCurrentProfile = () => async (dispatch) => {
     });
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -37,7 +41,10 @@ export const getProfiles = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -55,7 +62,10 @@ export const getProfileById = (userId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -69,18 +79,19 @@ export const createProfile = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
-
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
-
   }
 };
 
@@ -97,18 +108,19 @@ export const addExperience = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
-
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status },
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
-
   }
 };
 
@@ -125,18 +137,19 @@ export const addEducation = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
-
     const errors = error.response.data.errors;
 
     if (errors) {
-      errors.forEach((error) => dispatch(setAlert(error.msg, 'danger')));
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
-
   }
 };
 
@@ -153,7 +166,10 @@ export const deleteExperience = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -171,7 +187,10 @@ export const deleteEducation = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -189,4 +208,8 @@ export const deleteAccount = () => async (dispatch) => {
       });
     }
   }
+};
+
+export const filterProfiles = (text) => async (dispatch) =>{
+  dispatch({ type: FILTER_PROFILES, payload: text });
 };
