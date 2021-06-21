@@ -3,29 +3,33 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import formatDate from "../../../utils/formatDate";
-import { Button } from "react-bootstrap";
+import { Col, Card } from "react-bootstrap";
 
 const CommentItem = ({
   postId,
   comment: { _id, text, username, avatar, user, date },
   auth,
-}) => {
-  return (
-    <>
-      <h5>{username}</h5>
-      <Link to={`/profile/${user}`}>Profile</Link>
-      <div>
-        <p>{text}</p>
-        <p className="post-date">Posted on {formatDate(date)}</p>
-        {user === auth.user._id ? (
-          <Button variant="Danger" size="sm">
-            Delete
-          </Button>
-        ) : null}
-      </div>
-    </>
-  );
-};
+  deleteComment,
+}) => (
+  <>
+    <Col xs={12} className="mb-2 text-center">
+      <Card>
+        <Link to={`/profile/${user}`}>
+          <Card.Title>
+            User: {username.charAt(0).toUpperCase() + username.slice(1)}
+          </Card.Title>
+        </Link>
+        <Card.Text className="my-1">
+          {" "}
+          <small>Comment:</small> {text}
+        </Card.Text>
+        <Card.Text className="post-date">
+          <small>Posted on:</small> {formatDate(date)}
+        </Card.Text>
+      </Card>
+    </Col>
+  </>
+);
 
 CommentItem.propTypes = {
   postId: PropTypes.string.isRequired,
@@ -37,4 +41,4 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(null,mapStateToProps)(CommentItem);
+export default connect(mapStateToProps, {})(CommentItem);

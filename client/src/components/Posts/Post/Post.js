@@ -9,6 +9,7 @@ import { Row, Container, Col } from "react-bootstrap";
 import { connect } from "react-redux";
 import { getPost } from "../../../actions/post";
 
+
 const Post = ({ getPost, post: { post }, match }) => {
   useEffect(() => {
     getPost(match.params.id);
@@ -22,6 +23,16 @@ const Post = ({ getPost, post: { post }, match }) => {
         <Col className="mt-5">
           <PostItem post={post} showActions={false} />
           <CommentForm postId={post._id} />
+          <Row className="mt-2 mb-2">
+            <h5 className="mx-auto">Comments of the user </h5>
+            {post.comments.map((comment) => (
+              <CommentItem
+                key={comment._id}
+                comment={comment}
+                postId={post._id}
+              />
+            ))}
+          </Row>
         </Col>
       </Row>
     </Container>

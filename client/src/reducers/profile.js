@@ -46,10 +46,9 @@ export default function (state = initialState, action) {
     case FILTER_PROFILES:
       return {
         ...state,
-        filtered: state.profiles.filter((profile) => {
-          const regex = new RegExp(`${payload}`);
-          return profile.username.match(regex) || profile.email.match(regex);
-        }),
+       filtered:state.profiles.filter((profile)=>{
+         return profile.username.toLowerCase().search(payload.toLowerCase());
+       })
       };
 
     case ACCOUNT_DELETED:

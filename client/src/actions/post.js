@@ -39,10 +39,7 @@ export const getPost = (id) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
