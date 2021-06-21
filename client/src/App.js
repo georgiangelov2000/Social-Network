@@ -15,6 +15,7 @@ import CurrentProfile from "./components/Profile/CurrentProfile/CurrentProfile";
 import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import Posts from "./components/Posts/Posts/Posts";
 import Post from "./components/Posts/Post/Post";
+import NotFound from "./components/NotFound/NotFound";
 
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -71,6 +72,7 @@ function App() {
           path="/add-education" 
           component={AddEducation} 
           />
+          <Route component={NotFound} />
         </Switch>
       </Provider>
     </div>
