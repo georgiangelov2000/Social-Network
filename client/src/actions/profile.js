@@ -69,6 +69,7 @@ export const createProfile = (formData, history) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };

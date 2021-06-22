@@ -5,24 +5,57 @@ import { deleteExperience } from "../../../actions/profile";
 import { connect } from "react-redux";
 import { Table, Button } from "react-bootstrap";
 
+import {Building,GeoAltFill,CalendarCheck} from "react-bootstrap-icons"
+
 const DashExperience = ({ experience, deleteExperience }) => {
   return (
     <>
-      <h2 className="text-center mt-3">Experience Details</h2>
+      <h4 className="text-center mt-3">Experience Details</h4>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>Company</th>
-            <th>Title</th>
-            <th>Location</th>
-            <th>Years</th>
-            <th>Action</th>
+            <th><Building />  
+            <small className="ml-1">
+              <strong>
+               Company
+              </strong>
+            </small>
+            </th>
+            <th>
+            <small className="ml-1">
+              <strong>
+               Title
+              </strong>
+            </small>
+            </th>
+            <th>
+            <GeoAltFill />
+            <small className="ml-1">
+              <strong>
+               Location
+              </strong>
+            </small>
+            </th>
+            <th><CalendarCheck />
+            <small className="ml-1">
+              <strong>
+                Years
+              </strong>
+            </small>
+            </th>
+            <th>
+            <small className="ml-1">
+              <strong>
+                Action
+              </strong>
+            </small>
+            </th>
           </tr>
         </thead>
         <tbody>
           {experience.map((exp) => (
             <tr key={exp._id}>
-              <td>{exp.company}</td>
+              <td> {exp.company}</td>
               <td>{exp.title}</td>
               <td>{exp.location}</td>
               <td>

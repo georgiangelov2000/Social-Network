@@ -5,18 +5,50 @@ import { deleteEducation } from "../../../actions/profile";
 import { Table, Button } from "react-bootstrap";
 import { connect } from "react-redux";
 
+import {CalendarCheck,BookmarkFill} from "react-bootstrap-icons"
+
 const DashEducation = ({ education, deleteEducation }) => {
   return (
     <>
-      <h2 className="text-center">Education Details</h2>
+      <h4 className="text-center">Education Details</h4>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>School</th>
-            <th>Degree</th>
-            <th>Field of study</th>
-            <th>Years</th>
-            <th>Action</th>
+            <th>
+            <small className="ml-1">
+              <strong>
+                School
+              </strong>
+            </small>
+            </th>
+            <th><BookmarkFill />
+            <small className="ml-1">
+              <strong>
+                Degree
+              </strong>
+            </small>
+            </th>
+            <th>
+            <small className="ml-1">
+              <strong>
+                Field of study
+              </strong>
+            </small>
+            </th>
+            <th><CalendarCheck />
+            <small className="ml-1">
+              <strong>
+                Years
+              </strong>
+            </small>
+            </th>
+            <th>
+            <small className="ml-1">
+              <strong>
+                Action
+              </strong>
+            </small>
+            </th>
           </tr>
         </thead>
         <tbody>

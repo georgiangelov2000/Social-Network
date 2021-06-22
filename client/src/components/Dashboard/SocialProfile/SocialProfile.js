@@ -12,22 +12,45 @@ import {
 const SocialProfile = ({ profile: { social } }) => {
   return (
     <>
-      <h2 className="text-center">Social Details</h2>
+      <h4 className="text-center">Social Details</h4>
       <Table striped bordered hover size="sm">
         <thead>
           <tr>
-            <th>Instagram</th>
-            <th>Linkedin</th>
-            <th>Facebook</th>
-            <th>Twitter</th>
+            <th><Instagram />
+            <small className="ml-1">
+              <strong>
+               Instagram
+              </strong>
+            </small>
+            </th>
+            <th><Linkedin />
+            <small className="ml-1">
+              <strong>
+               Linkedin
+              </strong>
+            </small>
+            </th>
+            <th><Facebook />
+            <small className="ml-1">
+              <strong>
+               Facebook
+              </strong>
+            </small>
+            </th>
+            <th><Twitter />
+            <small className="ml-1">
+              <strong>
+               Twitter
+              </strong>
+            </small>
+            </th>
           </tr>
         </thead>
         <tbody>
           {social ? (
             <tr>
               {social.instagram ? (
-                <td>
-                  <Instagram />
+                <td>  
                   <a href={social.instagram}> Instagram</a>
                 </td>
               ) : (
@@ -36,7 +59,6 @@ const SocialProfile = ({ profile: { social } }) => {
 
               {social.linkedin ? (
                 <td>
-                  <Linkedin />
                   <a href={social.linkedin}> Linkedin</a>
                 </td>
               ) : (

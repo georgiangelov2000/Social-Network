@@ -12,7 +12,8 @@ const initialState = {
   profile: null,
   profiles: [],
   error: {},
-  filtered:[]
+  filtered:[],
+  loading:true
 };
 
 export default function (state = initialState, action) {
@@ -24,17 +25,20 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: payload,
+        loading:false,
       };
     case GET_PROFILES:
       return {
         ...state,
         profiles: payload,
+        loading:false,
       };
     case PROFILE_ERROR:
       return {
         ...state,
         error: payload,
         profile: null,
+        loading:false,
       };
     case CLEAR_PROFILE:
       return {
@@ -47,6 +51,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         profile: null,
+        loading:false,
       };
     default:
       return state;
