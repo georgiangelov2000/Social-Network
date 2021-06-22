@@ -23,43 +23,45 @@ const SocialProfile = ({ profile: { social } }) => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            {social.instagram ? (
-              <td>
-                <Instagram />
-                <a href={social.instagram}> Instagram</a>
-              </td>
-            ) : (
-              <td></td>
-            )}
+          {social ? (
+            <tr>
+              {social.instagram ? (
+                <td>
+                  <Instagram />
+                  <a href={social.instagram}> Instagram</a>
+                </td>
+              ) : (
+                <td></td>
+              )}
 
-            {social.linkedin ? (
-              <td>
-                <Linkedin />
-                <a href={social.linkedin}> Linkedin</a>
-              </td>
-            ) : (
-              <td></td>
-            )}
+              {social.linkedin ? (
+                <td>
+                  <Linkedin />
+                  <a href={social.linkedin}> Linkedin</a>
+                </td>
+              ) : (
+                <td></td>
+              )}
 
-            {social.facebook ? (
-              <td>
-                <Facebook />
-                <a href={social.facebook}> Facebook</a>
-              </td>
-            ) : (
-              <td></td>
-            )}
+              {social.facebook ? (
+                <td>
+                  <Facebook />
+                  <a href={social.facebook}> Facebook</a>
+                </td>
+              ) : (
+                <td></td>
+              )}
 
-            {social.twitter ? (
-              <td>
-                <Twitter />
-                <a href={social.twitter}> Twitter</a>
-              </td>
-            ) : (
-              <td></td>
-            )}
-          </tr>
+              {social.twitter ? (
+                <td>
+                  <Twitter />
+                  <a href={social.twitter}> Twitter</a>
+                </td>
+              ) : (
+                <td></td>
+              )}
+            </tr>
+          ) : null}
         </tbody>
       </Table>
     </>

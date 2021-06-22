@@ -13,16 +13,14 @@ const Profiles = ({ getProfiles, profile: { profiles } }) => {
 
   return (
     <>
-      <h4 className="text-center">Developers</h4>
-
-
+    <h5 className="text-center mt-2">Developers</h5>
       <Row xs={1} md={3} className="m-0 g-4">
         {profiles.length > 0 ? (
           profiles.map((profile) => (
             <ProfileItem key={profile._id} profile={profile} />
           ))
-        ) : (
-          <h5>No profiles found...</h5>
+        ) : ( 
+          <h5 className="m-auto text-center text-primary">No profiles found...</h5>
         )}
       </Row>
     </>

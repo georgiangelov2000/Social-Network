@@ -4,7 +4,6 @@ import {
   CLEAR_PROFILE,
   UPDATE_PROFILE,
   GET_PROFILES,
-  FILTER_PROFILES,
   LOGOUT,
   ACCOUNT_DELETED,
 } from "../actions/types";
@@ -42,15 +41,6 @@ export default function (state = initialState, action) {
         ...state,
         profile: null,
       };
-
-    case FILTER_PROFILES:
-      return {
-        ...state,
-       filtered:state.profiles.filter((profile)=>{
-         return profile.username.toLowerCase().search(payload.toLowerCase());
-       })
-      };
-
     case ACCOUNT_DELETED:
     case CLEAR_PROFILE:
     case LOGOUT:

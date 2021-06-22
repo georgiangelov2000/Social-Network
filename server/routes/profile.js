@@ -29,6 +29,10 @@ router.post(
   [
     auth,
     [
+      check("company", "Company is required").not().isEmpty(),
+      check("website", "Website is required").not().isEmpty(),
+      check("location", "Location is required").not().isEmpty(),
+      check("bio", "Bio is required").not().isEmpty(),
       check("status", "Status is required").not().isEmpty(),
       check("skills", "Skills is required").not().isEmpty(),
     ],
@@ -47,7 +51,6 @@ router.post(
       location,
       bio,
       status,
-      githubusername,
       skills,
       youtube,
       facebook,
@@ -64,7 +67,6 @@ router.post(
     if (location) profileFields.location = location;
     if (status) profileFields.status = status;
     if (bio) profileFields.bio = bio;
-    if (githubusername) profileFields.githubusername = githubusername;
     if (skills) {
       profileFields.skills = skills.split(",").map((skill) => skill.trim());
     }

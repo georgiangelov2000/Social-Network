@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Avatar from "react-avatar";
 import { Row, Col, ListGroupItem, ListGroup } from "react-bootstrap";
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck } from "react-icons/fa";
 
 const ProfileDetails = ({
   profile: {
@@ -56,7 +56,8 @@ const ProfileDetails = ({
 
             {social && social.twitter && (
               <ListGroupItem>
-                <a href={social.twitter}>Twitter</a>
+                <span>Twitter: </span>
+                <a href={social.twitter}>{social.twitter}</a>
               </ListGroupItem>
             )}
 
@@ -69,7 +70,8 @@ const ProfileDetails = ({
 
             {social && social.linkedin && (
               <ListGroupItem>
-                <a href={social.linkedin}>Linkedin</a>
+                <span>Linkedin: </span>
+                <a href={social.linkedin}>{social.linkedin}</a>
               </ListGroupItem>
             )}
 

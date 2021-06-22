@@ -33,10 +33,12 @@ const Dashboard = ({
               <Link className="text-white" to="/edit-profile">
                 Edit profile
               </Link>
-
-              <Link className="text-white" to="/create-profile">
-                Create profile
-              </Link>
+              
+              {profile ? null : (
+                <Link className="text-white" to="/create-profile">
+                  Create profile
+                </Link>
+              )}
 
               <Link className="text-white" to="/add-experience">
                 Add experience

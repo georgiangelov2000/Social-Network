@@ -40,7 +40,7 @@ const Login = ({ login, isAuthenticated }) => {
                 size="sm"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 value={email}
                 onChange={onChange}
               />

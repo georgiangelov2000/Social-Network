@@ -24,7 +24,7 @@ const CurrentProfile = ({
   return (
     <>
       {profile === null ? (
-        <p>Profile not found</p>
+        <p className="text-center text-danger">Profile not found... Please try again !</p>
       ) : (
         <Row className="my-1 m-0">
           <Col className="text-center mb-4">

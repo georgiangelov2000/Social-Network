@@ -19,12 +19,10 @@ export const getPosts = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
@@ -37,6 +35,7 @@ export const getPost = (id) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
       payload: { msg: error.response.statusText, status: error.response.status }
@@ -52,12 +51,10 @@ export const addPost = (formData) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
@@ -70,12 +67,10 @@ export const deletePost = (id) => async (dispatch) => {
       payload: id,
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
@@ -89,12 +84,10 @@ export const addLike = (id) => async (dispatch) => {
       payload: { id, likes: res.data },
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
@@ -108,28 +101,29 @@ export const removeLike = (id) => async (dispatch) => {
       payload: { id, likes: res.data },
     });
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
-      payload: {
-        msg: error.response.statusText,
-        status: error.response.status,
-      },
+      payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
 };
 
 export const addComment = (postId, formData) => async (dispatch) => {
+  const config={
+    headers:{
+      'Content-Type': 'application/json'
+    }
+  }
   try {
-    const res = await axios.post(
-      `http://localhost:5000/api/posts/comment/${postId}`,
-      formData
-    );
+    const res = await axios.post(`http://localhost:5000/api/posts/comment/${postId}`,formData,config);
     dispatch({
       type: ADD_COMMENT,
       payload: res.data,
     });
     dispatch(setAlert("Comment Added", "success"));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
       payload: { msg: error.response.statusText, status: error.response.status }
@@ -139,13 +133,14 @@ export const addComment = (postId, formData) => async (dispatch) => {
 
 export const deleteComment = (postId, commentId) => async (dispatch) => {
   try {
-     await axios.delete(`http://localhost:5000/api/posts/comment/${postId}${commentId}`);
+     await axios.delete(`http://localhost:5000/api/posts/comment/${postId}/${commentId}`);
     dispatch({
       type: REMOVE_COMMENT,
       payload: commentId
     });
-    dispatch(setAlert("Comment Removed", "success"));
+    dispatch(setAlert("Comment Removed", "danger"));
   } catch (error) {
+    console.log(error);
     dispatch({
       type: POST_ERROR,
       payload: { msg: error.response.statusText, status: error.response.status }

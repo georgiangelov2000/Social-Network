@@ -29,6 +29,7 @@ const CommentForm = ({ postId, addComment }) => {
             placeholder="Create comment"
             rows={3}
             name="text"
+            value={text}
             onChange={onChange}
           />
         </Form.Group>

@@ -15,6 +15,7 @@ const EditProfile = ({
   profile: { profile },
   createProfile,
   getCurrentProfile,
+  history
 }) => {
   const [formData, setFormData] = useState({
     company: "",
@@ -69,13 +70,13 @@ const EditProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData);
+    createProfile(formData,history);
   };
 
   return (
     <Container>
       <Form onSubmit={onSubmit}>
-        <h3 className="text-center">Create your profile</h3>
+        <h3 className="text-center">Edit your profile</h3>
 
         <Form.Group controlId="exampleForm.ControlSelect1">
           <Form.Control

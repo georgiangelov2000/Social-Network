@@ -21,7 +21,7 @@ const ProfileItem = ({
 }) => {
   return (
     <Col className="m-auto" xs={3}>
-      <ListGroup className="mb-3">
+      <ListGroup className="mb-3 text-center ">
         <ListGroupItem className="text-center">
           <Avatar size="150" round={true} src={avatar} />
         </ListGroupItem>

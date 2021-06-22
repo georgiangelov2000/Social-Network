@@ -5,7 +5,6 @@ const auth = require("../middleware/auth");
 
 const Post = require("../models/PostModel");
 const User = require("../models/UserModel");
-const Profile = require("../models/ProfileModel");
 
 router.post(
   "/",

@@ -47,7 +47,7 @@ const Register = ({ register, isAuthenticated }) => {
               <Form.Control
                 size="sm"
                 type="text"
-                placeholder="Enter Username"
+                placeholder="Username"
                 name="username"
                 value={username}
                 onChange={onChange}
@@ -60,7 +60,7 @@ const Register = ({ register, isAuthenticated }) => {
                 size="sm"
                 name="email"
                 type="email"
-                placeholder="Enter email"
+                placeholder="Email"
                 onChange={onChange}
                 value={email}
               />
@@ -84,7 +84,7 @@ const Register = ({ register, isAuthenticated }) => {
                 size="sm"
                 type="password"
                 name="password2"
-                placeholder="Password"
+                placeholder="Confirm Password"
                 onChange={onChange}
                 value={password2}
               />
