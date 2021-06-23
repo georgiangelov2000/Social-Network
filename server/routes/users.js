@@ -7,9 +7,9 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const User = require("../models/UserModel");
 
-const async =require("async");
+const async = require("async");
 const nodemailer = require("nodemailer");
-const crypto=require("crypto");
+const crypto = require("crypto");
 
 router.post(
   "/register",
@@ -57,7 +57,7 @@ router.post(
       const payload = {
         user: {
           id: user.id,
-          user
+          user,
         },
       };
 
@@ -67,18 +67,15 @@ router.post(
         { expiresIn: 360000 },
         (error, token) => {
           if (error) throw error;
-          res.json({ token , user });
+          res.json({ token, user });
         }
       );
-
     } catch (error) {
       console.error(error.message);
       res.status(500).send("Server error!");
     }
   }
 );
-
-
 
 router.post("/forgotpassword", (req, res, next) => {
   async.waterfall(
@@ -95,7 +92,9 @@ router.post("/forgotpassword", (req, res, next) => {
         })
           .then((user) => {
             if (!user) {
-              return res.status(400).json("User does not exist with this email.");
+              return res
+                .status(400)
+                .json("User does not exist with this email.");
             }
             user.resetPasswordToken = token;
             user.resetPasswordExpires = Date.now() + 1800000;
@@ -105,8 +104,8 @@ router.post("/forgotpassword", (req, res, next) => {
             });
           })
           .catch((error) => {
-            console.error(error.message)
-            res.status(500).send("Server error")
+            console.error(error.message);
+            res.status(500).send("Server error");
           });
       },
       (token, user) => {
@@ -123,12 +122,19 @@ router.post("/forgotpassword", (req, res, next) => {
           subject: "Recovery Email from Auth Project",
           text:
             "Please click the following link to recover your passoword: \n\n" +
-            "http://" +req.headers.host +"/reset/" + token +"\n\n" +"If you did not request this, please ignore this email.",
+            "http://" +
+            req.headers.host +
+            "/reset/" +
+            token +
+            "\n\n" +
+            "If you did not request this, please ignore this email.",
         };
         // console.log(mailOptions.to);
         // console.log(mailOptions)
         smtpTransport.sendMail(mailOptions, (error) => {
-          res.status(200).send("Email send with further instructions. Please check that.")
+          res
+            .status(200)
+            .send("Email send with further instructions. Please check that.");
         });
       },
     ],
@@ -137,7 +143,5 @@ router.post("/forgotpassword", (req, res, next) => {
     }
   );
 });
-
-
 
 module.exports = router;

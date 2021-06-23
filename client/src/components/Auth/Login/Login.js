@@ -69,6 +69,24 @@ const Login = ({ login, isAuthenticated }) => {
             >
               Submit
             </Button>
+            <>
+              <h6>Example Users</h6>
+              <div>
+                <small>Acc: georgi@abv.bg </small>
+                <small>Pass: georgi123 </small>
+              </div>
+              <hr />
+              <div>
+                <small>Acc: petar@abv.bg </small>
+                <small>Pass: petar123 </small>
+              </div>
+              <hr />
+              <div>
+                <small>Acc: ioan@abv.bg </small>
+                <small>Pass: ioan123@abv.bg </small>
+              </div>
+              <hr />
+            </>
             <Link to="/register">Don't Have an Account? </Link>
           </Form>
         </Col>

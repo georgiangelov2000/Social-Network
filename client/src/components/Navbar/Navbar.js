@@ -8,46 +8,56 @@ import { logout } from "../../actions/auth";
 const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
   const authLinks = (
     <>
-      <Nav className="bg-dark justify-content-center">
-        <Nav.Item>
-          <LinkContainer to="/">
-            <Nav.Link className="text-white">Home</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/forgotpassword">
-            <Nav.Link className="text-white">Forgot password</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/dashboard">
-            <Nav.Link className="text-white">
-              Welcome{" "}
-              {user &&
-                user.username.charAt(0).toUpperCase() + user.username.slice(1)}
-            </Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/profiles">
-            <Nav.Link className="text-white">Developers</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/dashboard">
-            <Nav.Link className="text-white">Dashboard</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item>
-          <LinkContainer to="/posts">
-            <Nav.Link className="text-white">Posts</Nav.Link>
-          </LinkContainer>
-        </Nav.Item>
-        <Nav.Item className="d-flex justify-content-center">
-          <Button size="sm" onClick={logout} variant="link">
-            LOGOUT
-          </Button>
-        </Nav.Item>
+      <Nav className="bg-dark justify-content-around">
+        <div className="d-flex">
+          <Nav.Item>
+            <LinkContainer to="/">
+              <Nav.Link className="text-white">Home</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item>
+            <LinkContainer to="/dashboard">
+              <Nav.Link className="text-white">
+                Welcome{" "}
+                {user &&
+                  user.username.charAt(0).toUpperCase() +
+                    user.username.slice(1)}
+              </Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item>
+            <LinkContainer to="/forgotpassword">
+              <Nav.Link className="text-white">Forgot password (not ready!)</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item>
+            <LinkContainer to="/changepassword">
+              <Nav.Link className="text-white">Change password (not ready!)</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          </div>
+          <div className="d-flex">
+          <Nav.Item>
+            <LinkContainer to="/dashboard">
+              <Nav.Link className="text-white">Dashboard</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item>
+            <LinkContainer to="/profiles">
+              <Nav.Link className="text-white">Developers</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item>
+            <LinkContainer to="/posts">
+              <Nav.Link className="text-white">Posts</Nav.Link>
+            </LinkContainer>
+          </Nav.Item>
+          <Nav.Item className="d-flex justify-content-center">
+            <Button size="sm" onClick={logout} variant="link">
+              LOGOUT
+            </Button>
+          </Nav.Item>
+          </div>
       </Nav>
     </>
   );

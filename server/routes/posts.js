@@ -53,9 +53,6 @@ router.get("/:id", auth, async (req, res) => {
     res.json(post);
   } catch (error) {
     console.error(error.message);
-    if (error.kind === "ObjectId") {
-      return res.status(404).json({ msg: "Post not found" });
-    }
     res.status(500).send("Server error");
   }
 });
@@ -74,9 +71,6 @@ router.delete("/:id", auth, async (req, res) => {
     await post.remove();
     res.json({ msg: "Post removed" });
   } catch (error) {
-    if (error.kind === "ObjectId") {
-      return res.status(404).json({ msg: "Post not found" });
-    }
     console.error(error.message);
     res.status(500).send("Server error");
   }
@@ -87,15 +81,14 @@ router.put("/like/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     //check if the post has already been liked
-    if (
-      post.likes.filter((like) => like.user.toString() === req.user.id).length >
-      0
-    ) {
+
+    if (post.likes.some((like) => like.user.toString() === req.user.id)) {
       return res.status(400).json({ msg: "Post already liked" });
     }
+
     post.likes.unshift({ user: req.user.id });
     await post.save();
-    res.json(post.likes);
+    return res.json(post.likes);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
@@ -106,11 +99,8 @@ router.put("/unlike/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
     //check if the post has already been liked
-    if (
-      post.likes.filter((like) => like.user.toString() === req.user.id)
-        .length === 0
-    ) {
-      return res.status(400).json({ msg: "Post has not yes been liked" });
+    if(!post.likes.some((like)=> like.user.toString()===req.user.id)){
+      return res.status(400).json({msg:"Post has not yet been liked"});
     }
     //Get remove index
     const removeIndex = post.likes
@@ -127,7 +117,8 @@ router.put("/unlike/:id", auth, async (req, res) => {
 
   router.post(
     "/comment/:id",
-    [auth, [check("text", "Text is required").not().isEmpty()]],
+    auth,
+    check("text", "Text is required").notEmpty(),
     async (req, res) => {
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
@@ -146,10 +137,12 @@ router.put("/unlike/:id", auth, async (req, res) => {
         };
 
         post.comments.unshift(newComment);
+
         await post.save();
+
         res.json(post.comments);
-      } catch (error) {
-        console.error(error.message);
+      } catch (err) {
+        console.error(err.message);
         res.status(500).send("Server Error");
       }
     }

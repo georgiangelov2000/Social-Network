@@ -17,6 +17,7 @@ import Posts from "./components/Posts/Posts/Posts";
 import Post from "./components/Posts/Post/Post";
 import NotFound from "./components/NotFound/NotFound";
 import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
+import ChangePassword from "./components/Auth/ChangePassword/ChangePassword";
 
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -73,6 +74,11 @@ function App() {
           exact 
           path="/add-education" 
           component={AddEducation} 
+          />
+          <PrivateRoute 
+          exact
+          path="/changepassword"
+          component={ChangePassword}
           />
           <Route component={NotFound} />
         </Switch>
