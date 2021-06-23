@@ -15,6 +15,11 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
+          <LinkContainer to="/forgotpassword">
+            <Nav.Link className="text-white">Forgot password</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
           <LinkContainer to="/dashboard">
             <Nav.Link className="text-white">
               Welcome{" "}
@@ -53,6 +58,11 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
         <Nav.Item>
           <LinkContainer to="/">
             <Nav.Link className="text-white">Home</Nav.Link>
+          </LinkContainer>
+        </Nav.Item>
+        <Nav.Item>
+          <LinkContainer to="/forgotpassword">
+            <Nav.Link className="text-white">Forgot password</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>

@@ -7,6 +7,10 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const User = require("../models/UserModel");
 
+const async =require("async");
+const nodemailer = require("nodemailer");
+const crypto=require("crypto");
+
 router.post(
   "/register",
   [
@@ -73,5 +77,67 @@ router.post(
     }
   }
 );
+
+
+
+router.post("/forgotpassword", (req, res, next) => {
+  async.waterfall(
+    [
+      (done) => {
+        crypto.randomBytes(20, (error, buffer) => {
+          let token = buffer.toString("hex");
+          done(error, token);
+        });
+      },
+      (token, done) => {
+        User.findOne({
+          email: req.body.email,
+        })
+          .then((user) => {
+            if (!user) {
+              return res.status(400).json("User does not exist with this email.");
+            }
+            user.resetPasswordToken = token;
+            user.resetPasswordExpires = Date.now() + 1800000;
+
+            user.save((error) => {
+              done(error, token, user);
+            });
+          })
+          .catch((error) => {
+            console.error(error.message)
+            res.status(500).send("Server error")
+          });
+      },
+      (token, user) => {
+        let smtpTransport = nodemailer.createTransport({
+          service: "Gmail",
+          auth: {
+            user: process.env.GMAIL_EMAIL,
+            pass: process.env.GMAIL_PASSWORD,
+          },
+        });
+        let mailOptions = {
+          to: user.email,
+          from: "George Angelov georgebelozemeca@gmail.com",
+          subject: "Recovery Email from Auth Project",
+          text:
+            "Please click the following link to recover your passoword: \n\n" +
+            "http://" +req.headers.host +"/reset/" + token +"\n\n" +"If you did not request this, please ignore this email.",
+        };
+        // console.log(mailOptions.to);
+        // console.log(mailOptions)
+        smtpTransport.sendMail(mailOptions, (error) => {
+          res.status(200).send("Email send with further instructions. Please check that.")
+        });
+      },
+    ],
+    (error) => {
+      if (error) return res.status(400).json(error);
+    }
+  );
+});
+
+
 
 module.exports = router;

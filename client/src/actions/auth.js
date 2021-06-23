@@ -28,7 +28,10 @@ export const loadUser = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error);
+    
+    dispatch({
+      type: USER_LOADED_ERROR
+    })
   }
 };
 
@@ -79,6 +82,7 @@ export const login = (email,password) => async (dispatch) => {
     if(errors){
       errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
     }
+    
     dispatch({
       type: LOGIN_ERROR,
     });

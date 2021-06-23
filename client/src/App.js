@@ -16,6 +16,7 @@ import EditProfile from "./components/Profile/EditProfile/EditProfile";
 import Posts from "./components/Posts/Posts/Posts";
 import Post from "./components/Posts/Post/Post";
 import NotFound from "./components/NotFound/NotFound";
+import ForgotPassword from "./components/Auth/ForgotPassword/ForgotPassword";
 
 import { Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";
@@ -37,6 +38,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/profile/:id" component={CurrentProfile} />
+          <Route exact path="/forgotpassword" component={ForgotPassword} />
           <PrivateRoute 
           exact 
           path="/dashboard" 

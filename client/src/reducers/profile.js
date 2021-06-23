@@ -11,11 +11,13 @@ import {
 const initialState = {
   profile: null,
   profiles: [],
+  filtered:[],
+  search:"",
   error: {},
   loading:true
 };
 
-export default function (state = initialState, action) {
+function profileReducer (state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -39,11 +41,6 @@ export default function (state = initialState, action) {
         profile: null,
         loading:false,
       };
-    case CLEAR_PROFILE:
-      return {
-        ...state,
-        profile: null,
-      };
     case ACCOUNT_DELETED:
     case CLEAR_PROFILE:
     case LOGOUT:
@@ -55,4 +52,6 @@ export default function (state = initialState, action) {
     default:
       return state;
   }
-}
+};
+
+export default profileReducer;

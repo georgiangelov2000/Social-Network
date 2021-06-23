@@ -51,6 +51,7 @@ const Register = ({ register, isAuthenticated }) => {
                 name="username"
                 value={username}
                 onChange={onChange}
+                autoComplete="on"
               />
             </Form.Group>
 
@@ -63,6 +64,7 @@ const Register = ({ register, isAuthenticated }) => {
                 placeholder="Email"
                 onChange={onChange}
                 value={email}
+                autoComplete="on"
               />
             </Form.Group>
 
@@ -75,6 +77,7 @@ const Register = ({ register, isAuthenticated }) => {
                 placeholder="Password"
                 onChange={onChange}
                 value={password}
+                autoComplete="on"
               />
             </Form.Group>
 
@@ -87,6 +90,7 @@ const Register = ({ register, isAuthenticated }) => {
                 placeholder="Confirm Password"
                 onChange={onChange}
                 value={password2}
+                autoComplete="on"
               />
             </Form.Group>
 
@@ -99,6 +103,7 @@ const Register = ({ register, isAuthenticated }) => {
             >
               Submit
             </Button>
+
             <Link to="/login">Already have an account?</Link>
           </Form>
         </Col>

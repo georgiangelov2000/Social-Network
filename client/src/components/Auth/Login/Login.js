@@ -28,7 +28,7 @@ const Login = ({ login, isAuthenticated }) => {
 
   return (
     <Container>
-       <Alert />
+      <Alert />
       <Row>
         <Col xs={6} className="m-auto">
           <Form onSubmit={onSubmit} className="text-center">
@@ -43,6 +43,7 @@ const Login = ({ login, isAuthenticated }) => {
                 placeholder="Email"
                 value={email}
                 onChange={onChange}
+                autoComplete="on"
               />
             </Form.Group>
 
@@ -55,6 +56,7 @@ const Login = ({ login, isAuthenticated }) => {
                 placeholder="Password"
                 onChange={onChange}
                 value={password}
+                autoComplete="on"
               />
             </Form.Group>
 

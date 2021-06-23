@@ -67,7 +67,6 @@ const SocialProfile = ({ profile: { social } }) => {
 
               {social.facebook ? (
                 <td>
-                  <Facebook />
                   <a href={social.facebook}> Facebook</a>
                 </td>
               ) : (
@@ -76,8 +75,7 @@ const SocialProfile = ({ profile: { social } }) => {
 
               {social.twitter ? (
                 <td>
-                  <Twitter />
-                  <a href={social.twitter}> Twitter</a>
+                  <a href={social.twitter}>Twitter</a>
                 </td>
               ) : (
                 <td></td>

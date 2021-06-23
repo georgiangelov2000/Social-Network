@@ -17,6 +17,8 @@ let UserSchema = new mongoose.Schema({
   avatar: {
     type: String,
   },
+  resetPasswordToken : String,
+  resetPasswordExpires : Date,
   date: {
     type: Date,
     default: Date.now,

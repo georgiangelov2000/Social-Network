@@ -13,7 +13,7 @@ import {
 
 const ProfileDetails = ({
   profile: {
-    user: { username, avatar },
+    user: { username },
     status,
     company,
     location,
@@ -21,6 +21,7 @@ const ProfileDetails = ({
     social,
     bio,
     skills,
+    img
   },
 }) => {
   return (
@@ -29,7 +30,7 @@ const ProfileDetails = ({
         <ListGroup>
           <>
             <ListGroupItem className="text-center">
-              <Avatar size="150" round={true} src={avatar} />
+              <Avatar size="150" round={true} src={img} />
             </ListGroupItem>
 
             <ListGroupItem>
@@ -80,7 +81,7 @@ const ProfileDetails = ({
                   <strong>Twitter </strong>
                   <FaTwitter /> :{" "}
                 </small>
-                <a href={social.twitter}>{social.twitter}</a>
+                <a href={social.twitter}>Twitter</a>
               </ListGroupItem>
             )}
 
@@ -90,7 +91,7 @@ const ProfileDetails = ({
                   <strong>Facebook </strong>
                   <FaFacebook /> :{" "}
                 </small>
-                <a href={social.facebook}>{social.facebook}</a>
+                <a href={social.facebook}>Facebook</a>
               </ListGroupItem>
             )}
 
@@ -100,7 +101,7 @@ const ProfileDetails = ({
                   <strong>Linkedin </strong>
                   <FaLinkedin /> :{" "}
                 </small>
-                <a href={social.linkedin}>{social.linkedin}</a>
+                <a href={social.linkedin}>Linkedin</a>
               </ListGroupItem>
             )}
 
@@ -110,7 +111,7 @@ const ProfileDetails = ({
                   <strong>Instagram </strong>
                   <FaInstagram /> :{" "}
                 </small>
-                <a href={social.instagram}>{social.instagram}</a>
+                <a href={social.instagram}>Instagram</a>
               </ListGroupItem>
             )}
 

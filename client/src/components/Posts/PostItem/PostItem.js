@@ -6,7 +6,6 @@ import { deletePost, addLike, removeLike } from "../../../actions/post";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import Avatar from "react-avatar";
 import { FaThumbsUp, FaThumbsDown } from "react-icons/fa";
 
 const PostItem = ({
@@ -15,23 +14,22 @@ const PostItem = ({
   removeLike,
   auth,
   showActions,
-  post: { _id, text, username, avatar, user, likes, comments, date },
+  post: { _id, text, username, user, likes, date},
 }) => {
   return (
     <Col xs={12} className="mb-2">
       <Card>
-        <Avatar className="m-auto" size="150" round={true} src={avatar} />
         <Card.Body className="text-center">
           <Card.Title>
             {" "}
             <h4>{username.charAt(0).toUpperCase() + username.slice(1)}</h4>
           </Card.Title>
           <Card.Text>
-            <p>
+            <div>
               {" "}
               <strong>Post: </strong>
               {text}
-            </p>
+            </div>
             <span>
               <CalendarCheck />
             </span>

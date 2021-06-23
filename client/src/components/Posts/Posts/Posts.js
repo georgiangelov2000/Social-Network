@@ -8,16 +8,20 @@ import { connect } from "react-redux";
 import { getPosts } from "../../../actions/post";
 import { Container } from "react-bootstrap";
 
+import Alert from "../../Alert/Alert";
+
 import { Row } from "react-bootstrap";
 import { Chat } from "react-bootstrap-icons";
 
 const Posts = ({ getPosts, post: { posts } }) => {
+
   useEffect(() => {
     getPosts();
   }, [getPosts]);
 
   return (
     <Container>
+      <Alert />
       <h1 className="text-center">Posts</h1>
       <p className="text-center">
         {" "}

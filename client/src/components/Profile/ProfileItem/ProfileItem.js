@@ -14,13 +14,14 @@ const ProfileItem = ({
     company,
     location,
     skills,
+    img,
   },
 }) => {
   return (
     <Col className="m-auto" xs={3}>
       <ListGroup className="mb-3 text-center ">
         <ListGroupItem className="text-center">
-          <Avatar size="150" round={true} src={avatar} />
+          <Avatar size="150" round={true} src={img} />
         </ListGroupItem>
         <ListGroupItem>
           <small>
@@ -42,8 +43,10 @@ const ProfileItem = ({
         </ListGroupItem>
         <ListGroupItem>
           <small>
-            <strong>Location </strong>
-            <FaLocationArrow />:{" "}
+            <strong>
+              {" "}
+              <FaLocationArrow /> Location:{" "}
+            </strong>
           </small>
           {location}
         </ListGroupItem>

@@ -8,8 +8,8 @@ import { Row } from "react-bootstrap";
 
 import Spinner from "../../Spinner/Spinner";
 
-const Profiles = ({ getProfiles, profile: { profiles,loading,filtered } }) => {
-  
+const Profiles = ({ getProfiles, profile: { profiles,loading } }) => {
+
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);

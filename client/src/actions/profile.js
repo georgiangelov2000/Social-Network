@@ -5,7 +5,6 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   CLEAR_PROFILE,
-  ACCOUNT_DELETED,
 } from "./types";
 import axios from "axios";
 
@@ -69,7 +68,10 @@ export const createProfile = (formData, history) => async (dispatch) => {
     console.log(error);
     dispatch({
       type: PROFILE_ERROR,
-      payload: { msg: error.response.statusText, status: error.response.status }
+      payload: {
+        msg: error.response.statusText,
+        status: error.response.status,
+      },
     });
   }
 };
@@ -87,11 +89,10 @@ export const addExperience = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
+    const errors = error.response.data.errors;
 
-    const errors=error.response.data.errors;
-
-    if(errors){
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
@@ -113,11 +114,10 @@ export const addEducation = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
-    
-    const errors=error.response.data.errors;
-    
-    if(errors){
-      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    const errors = error.response.data.errors;
+
+    if (errors) {
+      errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
     }
 
     dispatch({
@@ -137,7 +137,7 @@ export const deleteExperience = (id) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch({
       type: PROFILE_ERROR,
     });
@@ -155,13 +155,14 @@ export const deleteEducation = (id) => async (dispatch) => {
       payload: res.data,
     });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     dispatch({
       type: PROFILE_ERROR,
     });
   }
 };
 
+/*
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
     try {
@@ -176,3 +177,4 @@ export const deleteAccount = () => async (dispatch) => {
     }
   }
 };
+*/

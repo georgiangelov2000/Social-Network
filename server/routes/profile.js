@@ -57,6 +57,7 @@ router.post(
       twitter,
       instagram,
       linkedin,
+      img
     } = req.body;
 
     //Build profile object;
@@ -67,6 +68,7 @@ router.post(
     if (location) profileFields.location = location;
     if (status) profileFields.status = status;
     if (bio) profileFields.bio = bio;
+    if (img) profileFields.img = img;
     if (skills) {
       profileFields.skills = skills.split(",").map((skill) => skill.trim());
     }
@@ -226,7 +228,7 @@ router.put(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { school, degree, fieldofstudy, from, to, description } = req.body;
+    const { school, degree, fieldofstudy, from, to, description,img } = req.body;
 
     const newEdu = {
       school,
@@ -235,6 +237,7 @@ router.put(
       from,
       to,
       description,
+      img
     };
 
     try {

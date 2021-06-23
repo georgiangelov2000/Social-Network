@@ -27,6 +27,7 @@ const CreateProfile = ({ createProfile,history }) => {
     linkedin: "",
     youtube: "",
     instagram: "",
+    img:"",
   });
 
   const {
@@ -41,6 +42,7 @@ const CreateProfile = ({ createProfile,history }) => {
     linkedin,
     youtube,
     instagram,
+    img
   } = formData;
 
   const onChange = (e) =>
@@ -93,6 +95,7 @@ const CreateProfile = ({ createProfile,history }) => {
             Could be your own company or one you work for
           </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicText2">
           <Form.Control
             size="sm"
@@ -106,6 +109,7 @@ const CreateProfile = ({ createProfile,history }) => {
             Could be your own or a company website
           </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicText3">
           <Form.Control
             size="sm"
@@ -150,6 +154,21 @@ const CreateProfile = ({ createProfile,history }) => {
             Tell us a little about yourself
           </Form.Text>
         </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicText4">
+          <Form.Control
+            size="sm"
+            type="text"
+            name="img"
+            placeholder="Avatar url"
+            value={img}
+            onChange={onChange}
+          />
+          <Form.Text className="text-muted">
+            Image of the profile
+          </Form.Text>
+        </Form.Group>
+
         <Button
           onClick={() => toggleSocialFields(!displaySocialFields)}
           variant="success"

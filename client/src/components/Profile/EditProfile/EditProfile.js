@@ -15,7 +15,7 @@ const EditProfile = ({
   profile: { profile },
   createProfile,
   getCurrentProfile,
-  history
+  history,
 }) => {
   const [formData, setFormData] = useState({
     company: "",
@@ -29,6 +29,7 @@ const EditProfile = ({
     linkedin: "",
     youtube: "",
     instagram: "",
+    img: "",
   });
 
   const [displaySocialFields, toggleSocialFields] = useState(false);
@@ -43,6 +44,7 @@ const EditProfile = ({
       status: !profile.status ? "" : profile.status,
       skills: !profile.skills ? "" : profile.skills.join(","),
       bio: !profile.bio ? "" : profile.bio,
+      img: !profile.img ? "" : profile.img,
       twitter: !profile.social ? "" : profile.social.twitter,
       facebook: !profile.social ? "" : profile.social.facebook,
       linkedin: !profile.social ? "" : profile.social.linkedin,
@@ -63,6 +65,7 @@ const EditProfile = ({
     linkedin,
     youtube,
     instagram,
+    img
   } = formData;
 
   const onChange = (e) =>
@@ -70,7 +73,7 @@ const EditProfile = ({
 
   const onSubmit = (e) => {
     e.preventDefault();
-    createProfile(formData,history);
+    createProfile(formData, history);
   };
 
   return (
@@ -171,6 +174,19 @@ const EditProfile = ({
             Tell us a little about yourself
           </Form.Text>
         </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicText4">
+          <Form.Control
+            size="sm"
+            type="text"
+            name="img"
+            placeholder="Avatar url"
+            value={img}
+            onChange={onChange}
+          />
+          <Form.Text className="text-muted">Image of the profile</Form.Text>
+        </Form.Group>
+
         <Button
           onClick={() => toggleSocialFields(!displaySocialFields)}
           variant="success"
