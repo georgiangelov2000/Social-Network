@@ -12,7 +12,6 @@ const initialState = {
   profile: null,
   profiles: [],
   error: {},
-  filtered:[],
   loading:true
 };
 

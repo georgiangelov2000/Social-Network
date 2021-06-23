@@ -88,7 +88,12 @@ export const addExperience = (formData, history) => async (dispatch) => {
     history.push("/dashboard");
   } catch (error) {
 
-    console.log(error);
+    const errors=error.response.data.errors;
+
+    if(errors){
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
+
     dispatch({
       type: PROFILE_ERROR,
     });
@@ -108,7 +113,13 @@ export const addEducation = (formData, history) => async (dispatch) => {
     });
     history.push("/dashboard");
   } catch (error) {
-    console.log(error)
+    
+    const errors=error.response.data.errors;
+    
+    if(errors){
+      errors.forEach(error => dispatch(setAlert(error.msg, "danger")));
+    }
+
     dispatch({
       type: PROFILE_ERROR,
     });

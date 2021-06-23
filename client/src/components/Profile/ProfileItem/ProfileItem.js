@@ -4,11 +4,8 @@ import Avatar from "react-avatar";
 import { Link } from "react-router-dom";
 import style from "./ProfileItem.module.css";
 import { FaCheck } from "react-icons/fa";
-import {
-  ListGroup,
-  ListGroupItem,
-  Col,
-} from "react-bootstrap";
+import { ListGroup, ListGroupItem, Col } from "react-bootstrap";
+import { FaLocationArrow } from "react-icons/fa";
 
 const ProfileItem = ({
   profile: {
@@ -26,17 +23,28 @@ const ProfileItem = ({
           <Avatar size="150" round={true} src={avatar} />
         </ListGroupItem>
         <ListGroupItem>
-          <span>Name: </span>{" "}
+          <small>
+            <strong>Name: </strong>
+          </small>
           {username.charAt(0).toUpperCase() + username.slice(1)}
         </ListGroupItem>
         <ListGroupItem>
-          <span>Company: </span> {company}
+          <small>
+            <strong>Company: </strong>
+          </small>{" "}
+          {company}
         </ListGroupItem>
         <ListGroupItem>
-          <span>Status: </span> {status}
+          <small>
+            <strong>Status: </strong>
+          </small>{" "}
+          {status}
         </ListGroupItem>
         <ListGroupItem>
-          <span>Location: </span>
+          <small>
+            <strong>Location </strong>
+            <FaLocationArrow />:{" "}
+          </small>
           {location}
         </ListGroupItem>
         <ListGroupItem>

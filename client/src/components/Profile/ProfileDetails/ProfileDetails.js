@@ -3,6 +3,13 @@ import PropTypes from "prop-types";
 import Avatar from "react-avatar";
 import { Row, Col, ListGroupItem, ListGroup } from "react-bootstrap";
 import { FaCheck } from "react-icons/fa";
+import {
+  FaInstagram,
+  FaFacebook,
+  FaLinkedin,
+  FaTwitter,
+  FaLocationArrow,
+} from "react-icons/fa";
 
 const ProfileDetails = ({
   profile: {
@@ -26,65 +33,92 @@ const ProfileDetails = ({
             </ListGroupItem>
 
             <ListGroupItem>
-              <span>Name: </span>
-              {username.charAt(0).toUpperCase()+ username.slice(1)}
+              <small>
+                <strong>Name: </strong>
+              </small>
+              {username.charAt(0).toUpperCase() + username.slice(1)}
             </ListGroupItem>
 
             {website && (
               <ListGroupItem>
-                <span>Company: </span> {company}
+                <small>
+                  <strong>Company: </strong>
+                </small>
+                {company}
               </ListGroupItem>
             )}
 
             <ListGroupItem>
-              <span>Status: </span> {status}
+              <small>
+                <strong>Status: </strong>
+              </small>{" "}
+              {status}
             </ListGroupItem>
 
             {location && (
               <ListGroupItem>
-                <span>Location: </span>
+                <small>
+                  <strong>Location </strong>
+                  <FaLocationArrow /> :{" "}
+                </small>
                 {location}
               </ListGroupItem>
             )}
 
             {website && (
               <ListGroupItem>
-                <span>Website: </span>
+                <small>
+                  <strong>Website: </strong>
+                </small>
                 <a href={website}>{website}</a>
               </ListGroupItem>
             )}
 
             {social && social.twitter && (
               <ListGroupItem>
-                <span>Twitter: </span>
+                <small>
+                  <strong>Twitter </strong>
+                  <FaTwitter /> :{" "}
+                </small>
                 <a href={social.twitter}>{social.twitter}</a>
               </ListGroupItem>
             )}
 
             {social && social.facebook && (
               <ListGroupItem>
-                <span>Facebook: </span>
+                <small>
+                  <strong>Facebook </strong>
+                  <FaFacebook /> :{" "}
+                </small>
                 <a href={social.facebook}>{social.facebook}</a>
               </ListGroupItem>
             )}
 
             {social && social.linkedin && (
               <ListGroupItem>
-                <span>Linkedin: </span>
+                <small>
+                  <strong>Linkedin </strong>
+                  <FaLinkedin /> :{" "}
+                </small>
                 <a href={social.linkedin}>{social.linkedin}</a>
               </ListGroupItem>
             )}
 
             {social && social.instagram && (
               <ListGroupItem>
-                <span>Instagram: </span>
+                <small>
+                  <strong>Instagram </strong>
+                  <FaInstagram /> :{" "}
+                </small>
                 <a href={social.instagram}>{social.instagram}</a>
               </ListGroupItem>
             )}
 
             {bio && (
               <ListGroupItem>
-                <span>Bio: </span>
+                <small>
+                  <strong>Bio: </strong>
+                </small>
                 {bio}
               </ListGroupItem>
             )}

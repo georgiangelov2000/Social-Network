@@ -8,7 +8,8 @@ import { Row } from "react-bootstrap";
 
 import Spinner from "../../Spinner/Spinner";
 
-const Profiles = ({ getProfiles, profile: { profiles,loading } }) => {
+const Profiles = ({ getProfiles, profile: { profiles,loading,filtered } }) => {
+  
   useEffect(() => {
     getProfiles();
   }, [getProfiles]);
@@ -19,6 +20,7 @@ const Profiles = ({ getProfiles, profile: { profiles,loading } }) => {
     {loading ? (
       <Spinner />
     ) : (
+      <>
       <Row xs={1} md={3} className="m-0 g-4">
       {profiles.length > 0 ? (
         profiles.map((profile) => (
@@ -28,6 +30,7 @@ const Profiles = ({ getProfiles, profile: { profiles,loading } }) => {
         <h5 className="m-auto text-center text-primary">No profiles found...</h5>
       )}
     </Row>
+    </>
     )}
      
     </>
