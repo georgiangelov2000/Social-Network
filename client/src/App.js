@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import "./App.css";
 
+import setAuthToken from "./utils/setAuthToken";
+
 import Home from "./components/Home/Home";
 import Header from "./components/Header/Header";
 import Register from "./components/Auth/Register/Register";
@@ -25,10 +27,14 @@ import { loadUser } from "./actions/auth";
 import store from "./store";
 
 function App() {
-  useEffect(() => {
-    store.dispatch(loadUser());
-  }, []);
 
+  useEffect(() => {
+    if(localStorage.token) {
+      setAuthToken(localStorage.token)
+    }
+  });
+  store.dispatch(loadUser());
+  
   return (
     <div className="App">
       <Provider store={store}>

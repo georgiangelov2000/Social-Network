@@ -14,7 +14,7 @@ const PostItem = ({
   removeLike,
   auth,
   showActions,
-  post: { _id, text, username, user, likes, date},
+  post: { _id, text, username, user, likes, date },
 }) => {
   return (
     <Col xs={12} className="mb-2">
@@ -47,14 +47,18 @@ const PostItem = ({
 
                 <Col xs={12}>
                   {user === auth.user._id ? (
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                      onClick={() => deletePost(_id)}
-                      className="mb-2"
-                    >
-                      Delete
-                    </Button>
+                    <>
+                      <Col>
+                        <Button
+                          variant="outline-danger"
+                          size="sm"
+                          onClick={() => deletePost(_id)}
+                          className="mb-2"
+                        >
+                          Delete
+                        </Button>
+                      </Col>
+                    </>
                   ) : null}
                 </Col>
 
@@ -81,7 +85,7 @@ const PostItem = ({
                         <FaThumbsDown />
                       </Button>
                     </Col>
-                    
+
                     <Col xs={12}>
                       <span>
                         {likes.length < 0 ? (
