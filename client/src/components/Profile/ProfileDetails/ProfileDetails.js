@@ -37,7 +37,7 @@ const ProfileDetails = ({
               <small>
                 <strong>Name: </strong>
               </small>
-              {username.charAt(0).toUpperCase() + username.slice(1)}
+              {username}
             </ListGroupItem>
 
             {website && (
