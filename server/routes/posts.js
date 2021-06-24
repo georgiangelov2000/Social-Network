@@ -25,6 +25,8 @@ router.post(
         user: req.user.id,
       });
 
+      // console.log(newPost);
+
       const post = await newPost.save();
       res.json(post);
     } catch (error) {
@@ -37,6 +39,7 @@ router.post(
 router.get("/", auth, async (req, res) => {
   try {
     const posts = await Post.find().sort({ date: -1 });
+    //console.log(posts);
     res.json(posts);
   } catch (error) {
     console.error(error.message);
@@ -47,6 +50,7 @@ router.get("/", auth, async (req, res) => {
 router.get("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findById(req.params.id);
+    //console.log(post);
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
     }
@@ -60,7 +64,7 @@ router.get("/:id", auth, async (req, res) => {
 router.delete("/:id", auth, async (req, res) => {
   try {
     const post = await Post.findByIdAndRemove(req.params.id);
-
+    // console.log(post)
     if (!post) {
       return res.status(404).json({ msg: "Post not found" });
     }
@@ -68,6 +72,8 @@ router.delete("/:id", auth, async (req, res) => {
     if (post.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: "User not authorized" });
     }
+    // console.log(post.user.toString());
+    // console.log(req.user.id);
     await post.remove();
     res.json({ msg: "Post removed" });
   } catch (error) {

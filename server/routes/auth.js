@@ -33,7 +33,6 @@ router.post(
   
       try {
         let user = await User.findOne({ email });
-  
         //if user exists
         if (!user) {
          return res
@@ -42,6 +41,7 @@ router.post(
         }
   
         const isMatch=await bcrypt.compare(password,user.password);
+        // console.log(isMatch)
 
         if(!isMatch) {
             return res 
@@ -56,7 +56,8 @@ router.post(
             user
           },
         };
-  
+        //console.log(payload);
+
         jwt.sign(
           payload,
           config.get("jwtSecret"),
