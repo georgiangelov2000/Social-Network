@@ -5,6 +5,8 @@ import {
   PROFILE_ERROR,
   UPDATE_PROFILE,
   CLEAR_PROFILE,
+  FILTER_PROFILES,
+  CLEAR_FILTER,
 } from "./types";
 import axios from "axios";
 
@@ -160,6 +162,16 @@ export const deleteEducation = (id) => async (dispatch) => {
       type: PROFILE_ERROR,
     });
   }
+};
+
+export const filterProfiles = (text) => async (dispatch) => {
+  dispatch({ type: FILTER_PROFILES, payload: text });
+};
+
+export const clearFilter = () => async (dispatch)=> {
+  dispatch({
+    type: CLEAR_FILTER,
+  });
 };
 
 /*

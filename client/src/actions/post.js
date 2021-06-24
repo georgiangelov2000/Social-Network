@@ -9,6 +9,8 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  FILTER_POSTS,
+  CLEAR_FILTER
 } from "../actions/types";
 
 export const getPosts = () => async (dispatch) => {
@@ -158,4 +160,14 @@ export const deleteComment = (postId, commentId) => async (dispatch) => {
       payload: { msg: error.response.statusText, status: error.response.status }
     });
   }
+};
+
+export const filterPosts = (text) => async (dispatch) => {
+  dispatch({ type: FILTER_POSTS, payload: text });
+};
+
+export const clearFilter = () => async (dispatch)=> {
+  dispatch({
+    type: CLEAR_FILTER,
+  });
 };

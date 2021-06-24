@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 import PostItem from "../PostItem/PostItem";
 import PostForm from "../PostForm/PostForm";
+import FilterPosts from "../FilterPosts/FilterPosts";
 
 import { connect } from "react-redux";
 import { getPosts } from "../../../actions/post";
@@ -13,8 +14,7 @@ import Alert from "../../Alert/Alert";
 import { Row } from "react-bootstrap";
 import { Chat } from "react-bootstrap-icons";
 
-const Posts = ({ getPosts, post: { posts } }) => {
-
+const Posts = ({ getPosts, post: { posts, filtered } }) => {
   useEffect(() => {
     getPosts();
   }, [getPosts]);
@@ -27,12 +27,19 @@ const Posts = ({ getPosts, post: { posts } }) => {
         {" "}
         <Chat /> Welcome to community
       </p>
+      <FilterPosts />
       <PostForm />
 
       <Row>
-        {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))}
+        {posts !== null ? (
+          <>
+            {filtered !== null
+              ? filtered.map((post) => (
+                  <PostItem key={post._id} post={post} />
+                ))
+              : posts.map((post) => <PostItem key={post._id} post={post} />)}
+          </>
+        ) : null}
       </Row>
     </Container>
   );
@@ -48,3 +55,10 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getPosts })(Posts);
+
+/*
+
+        {posts.map((post) => (
+          <PostItem key={post._id} post={post} />
+        ))}
+        */

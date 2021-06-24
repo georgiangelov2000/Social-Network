@@ -7,15 +7,18 @@ import {
   GET_POST,
   ADD_COMMENT,
   REMOVE_COMMENT,
+  FILTER_POSTS,
+  CLEAR_FILTER
 } from "../actions/types";
 
 const initialState = {
   posts: [],
+  filtered: null,
   post: null,
   error: {},
 };
 
-function postReducer (state = initialState, action) {
+function postReducer(state = initialState, action) {
   const { type, payload } = action;
 
   switch (type) {
@@ -51,6 +54,19 @@ function postReducer (state = initialState, action) {
           post._id === payload.id ? { ...post, likes: payload.likes } : post
         ),
       };
+    case FILTER_POSTS:
+      return {
+        ...state,
+        filtered: state.posts.filter((post) => {
+          const regex = new RegExp(`${payload}`, "gi");
+          return post.username.match(regex) || post.username.match(regex);
+        }),
+      };
+    case CLEAR_FILTER:
+      return {
+        ...state,
+        filtered: null,
+      };
     case ADD_COMMENT:
       return {
         ...state,
@@ -69,6 +85,6 @@ function postReducer (state = initialState, action) {
     default:
       return state;
   }
-};
+}
 
 export default postReducer;
