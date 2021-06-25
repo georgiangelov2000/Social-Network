@@ -7,7 +7,7 @@ import {
   LOGOUT,
   ACCOUNT_DELETED,
   FILTER_PROFILES,
-  CLEAR_FILTER
+  CLEAR_FILTER,
 } from "../actions/types";
 
 const initialState = {

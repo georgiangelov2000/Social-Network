@@ -25,6 +25,7 @@ const Profiles = ({
       ) : (
         <>
           <FilterProfiles />
+
           <Row xs={1} md={3} className="m-0 g-4">
           {profiles !== null ? (
             <>

@@ -174,6 +174,7 @@ export const clearFilter = () => async (dispatch)=> {
   });
 };
 
+
 /*
 export const deleteAccount = () => async (dispatch) => {
   if (window.confirm("Are you sure? This can NOT be undone!")) {
