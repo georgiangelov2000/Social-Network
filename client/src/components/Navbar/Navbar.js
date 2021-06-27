@@ -72,7 +72,7 @@ const Navbar = ({ isAuthenticated, logout, auth: { user } }) => {
         </Nav.Item>
         <Nav.Item>
           <LinkContainer to="/forgotpassword">
-            <Nav.Link className="text-white">Forgot password</Nav.Link>
+            <Nav.Link className="text-white">Forgot password (not ready!)</Nav.Link>
           </LinkContainer>
         </Nav.Item>
         <Nav.Item>
