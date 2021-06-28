@@ -88,8 +88,4 @@ const SocialProfile = ({ profile: { social } }) => {
   );
 };
 
-SocialProfile.propTypes = {
-  social: PropTypes.array.isRequired,
-};
-
 export default SocialProfile;
